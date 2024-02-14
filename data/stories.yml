@@ -1,0 +1,17 @@
+version: "3.1"
+
+stories:
+  - story: happy path
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - story: bye path
+    steps:
+      - intent: bye
+      - action: utter_bye
+
+  - story: Search properties path
+    steps:
+      - intent: search_properties
+      - action: action_search_properties

@@ -1,0 +1,34 @@
+version: "3.1"
+
+intents:
+  - bye
+  - greet
+  - search_properties
+
+entities:
+  - action
+  - property_type
+
+slots:
+  property_type:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: property_type
+
+responses:
+  utter_greet:
+    - text: Xin chào, tôi có thể giúp gì cho bạn?
+
+  utter_bye:
+    - text: Tạm biệt, hẹn gặp lại bạn sau!
+
+  utter_search_properties:
+    - text: Đây là những bài đăng dựa trên yêu cầu của bạn {properties}
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+actions:
+  - action_search_properties

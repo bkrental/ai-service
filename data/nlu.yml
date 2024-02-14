@@ -1,0 +1,49 @@
+version: "3.1"
+nlu:
+  - intent: greet
+    examples: |
+      - hi
+      - xin chào
+      - chào
+      - hello
+      - hey
+      - hello there
+      - hi bot
+      - hello bot
+      - hi there
+      - bắt đầu
+      - chào bạn
+      - chào bot
+
+  - intent: bye
+    examples: |
+      - kết thúc
+      - tạm biệt
+      - bye
+      - goodbye
+      - good bye
+      - thanks, bye
+
+  - intent: search_properties
+    examples: |
+      - Tìm [phòng trọ](property_type)
+      - Gợi ý các căn [chung cư](property_type)
+      - Tôi muốn tìm [nhà](property_type)
+      - Tìm [nhà nguyên căn](property_type)
+
+  - lookup: property_type
+    examples: |
+      - phòng trọ
+      - nhà trọ
+      - chung cư
+      - căn hộ
+      - nhà nguyên căn
+      - nhà riêng
+      - nhà mặt phố
+      - nhà đất
+      - đất nền
+      - đất
+      - ktx
+      - ký túc xá
+      - phòng trọ sinh viên
+      - sleepbox
