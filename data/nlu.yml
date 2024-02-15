@@ -31,6 +31,10 @@ nlu:
       - Tôi muốn tìm [nhà](property_type)
       - Tìm [nhà nguyên căn](property_type)
 
+  - intent: provide_price
+    examples: |
+      - giá từ [1 triệu]{"entity": "price", "role": "lower_bound"} đến [3 triệu]{ "entity": "price", "role": "upper_bound"}
+
   - lookup: property_type
     examples: |
       - phòng trọ

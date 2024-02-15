@@ -1,0 +1,14 @@
+rules:
+  - rule: Activate search properties form
+    steps:
+      - intent: search_properties
+      - action: search_properties_form
+      - active_loop: search_properties_form
+
+  - rule: Submit search properties form
+    condition:
+      - active_loop: search_properties_form
+    steps:
+      - action: search_properties_form
+      - active_loop: null
+      - action: action_search_properties

@@ -11,7 +11,7 @@ stories:
       - intent: bye
       - action: utter_bye
 
-  - story: Search properties path
-    steps:
-      - intent: search_properties
-      - action: action_search_properties
+  # - story: Search properties path
+  #   steps:
+  #     - intent: search_properties
+  #     - action: action_search_properties

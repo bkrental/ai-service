@@ -4,10 +4,15 @@ intents:
   - bye
   - greet
   - search_properties
+  - provide_price
 
 entities:
-  - action
+  - transaction_type
   - property_type
+  - price:
+      roles:
+        - lower_bound
+        - upper_bound
 
 slots:
   property_type:
@@ -15,6 +20,20 @@ slots:
     mappings:
       - type: from_entity
         entity: property_type
+
+  price_lower_bound:
+    type: float
+    mappings:
+      - type: from_entity
+        entity: price
+        role: lower_bound
+
+  price_upper_bound:
+    type: float
+    mappings:
+      - type: from_entity
+        entity: price
+        role: upper_bound
 
 responses:
   utter_greet:
@@ -25,6 +44,28 @@ responses:
 
   utter_search_properties:
     - text: Đây là những bài đăng dựa trên yêu cầu của bạn {properties}
+
+  utter_search_properties_not_found:
+    - text: Rất tiếc, tôi không tìm thấy bất kỳ bài đăng nào phù hợp với yêu cầu của bạn.
+
+  utter_ask_property_type:
+    - text: Bạn muốn tìm loại nhà trọ nào? (phòng trọ, nhà nguyên căn, chung cư, nhà mặt phố, nhà đất, đất nền, ký túc xá, sleepbox, ...)
+
+  utter_ask_price_range:
+    - text: Bạn muốn tìm nhà trọ với mức giá nào? (từ giá thấp nhất đến giá cao nhất)
+
+  utter_ask_search_properties_form_price_lower_bound:
+    - text: Bạn muốn tìm nhà trọ với mức giá thấp nhất là bao nhiêu?
+
+  utter_ask_search_properties_form_price_upper_bound:
+    - text: Bạn muốn tìm nhà trọ với mức giá cao nhất là bao nhiêu?
+
+forms:
+  search_properties_form:
+    required_slots:
+      - property_type
+      - price_lower_bound
+      - price_upper_bound
 
 session_config:
   session_expiration_time: 60
