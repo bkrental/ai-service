@@ -3,3 +3,4 @@ venv/
 **/__pycache__/
 models/
 .python-version
+components/vncorenlp/VnCoreNLP-1.2.jar
