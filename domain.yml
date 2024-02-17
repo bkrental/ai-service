@@ -42,6 +42,9 @@ responses:
   utter_bye:
     - text: Tạm biệt, hẹn gặp lại bạn sau!
 
+  utter_rephrase:
+    - text: Tôi chưa hiểu ý bạn lắm, bạn có thể nói rõ hơn không?
+
   utter_search_properties:
     - text: Đây là những bài đăng dựa trên yêu cầu của bạn {properties}
 

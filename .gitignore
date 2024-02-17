@@ -2,3 +2,4 @@ venv/
 .rasa/
 **/__pycache__/
 models/
+.python-version

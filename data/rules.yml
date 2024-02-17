@@ -12,3 +12,8 @@ rules:
       - action: search_properties_form
       - active_loop: null
       - action: action_search_properties
+
+  - rule: Ask to rephrase when the message with low NLU confidence
+    steps:
+      - intent: nlu_fallback
+      - action: utter_rephrase

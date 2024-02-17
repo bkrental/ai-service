@@ -30,10 +30,12 @@ nlu:
       - Gợi ý các căn [chung cư](property_type)
       - Tôi muốn tìm [nhà](property_type)
       - Tìm [nhà nguyên căn](property_type)
+      - Tìm [phòng trọ](property_type) quận 10 giá từ [3 triệu]{"entity": "price", "role": "lower_bound"} đến [4 triệu]{ "entity": "price", "role": "upper_bound"}
 
   - intent: provide_price
     examples: |
       - giá từ [1 triệu]{"entity": "price", "role": "lower_bound"} đến [3 triệu]{ "entity": "price", "role": "upper_bound"}
+      - Giá: [1tr]{"entity": "price", "role": "lower_bound"} - [3tr]{"entity": "price", "role": "upper_bound"}
 
   - lookup: property_type
     examples: |
@@ -51,3 +53,7 @@ nlu:
       - ký túc xá
       - phòng trọ sinh viên
       - sleepbox
+
+  - regex: price
+    examples: |
+      - (\d)+((.|,)(\d))*( )*(triệu|tr|triệu đồng|tr/tháng)
