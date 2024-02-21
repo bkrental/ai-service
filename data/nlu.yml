@@ -31,11 +31,41 @@ nlu:
       - Tôi muốn tìm [nhà](property_type)
       - Tìm [nhà nguyên căn](property_type)
       - Tìm [phòng trọ](property_type) quận 10 giá từ [3 triệu]{"entity": "price", "role": "lower_bound"} đến [4 triệu]{ "entity": "price", "role": "upper_bound"}
+      - Mình cần tìm [chung cư](property_type) giá từ [2 triệu]{"entity": "price", "role": "lower_bound"} đến [5 triệu]{ "entity": "price", "role": "upper_bound"}
+      - [Nhà trọ](property_type) giá từ [10 triệu]{"entity": "price", "role": "lower_bound"} đến [30 triệu]{ "entity": "price", "role": "upper_bound"}
+      - Cần tìm [sleepbox](property_type) giá tầm [1 tr/tháng]{ "entity": "price", "role": "lower_bound"}
+      - Mình muón tìm các [ký túc xá](property_type)
+      - Các [căn chung cư](property_type) giá rẻ
+      - Thuê (căn hộ)[property_type] giá dưới [5 triệu]{"entity": "price", "role": "upper_bound"}
+      - Tìm [phòng trọ](property_type) ở khu vực trung tâm thành phố
+      - Có [căn hộ](property_type) nào trống không ở gần đại học ABC không?
+      - Cho tôi xem danh sách các [nhà riêng](property_type) có sẵn ở khu vực này
+      - Anh/chị có thể tìm giúp tôi một [studio](property_type) cho thuê không?
+      - Tìm kiếm [chung cư](property_type) có giá dưới 500 USD một tháng
+      - Bạn có thể tìm giúp tôi một [biệt thự](property_type) gần bãi biển không?
+      - Có [căn hộ](property_type) cho thuê nằm trong phố cổ không?
+      - Tôi muốn thuê một [căn hộ](property_type) 1 phòng ngủ và 1 phòng tắm
+      - Anh/chị có thể giới thiệu cho tôi một [chung cư](property_type) gần công viên không?
+      - Tìm kiếm [căn hộ](property_type) với tiện ích như bể bơi và phòng gym
+      - Tôi cần một [căn hộ](property_type) với gác lửng
+      - Tìm kiếm [phòng trọ](property_type) có chỗ đậu xe riêng
+      - Có [studio](property_type) cho thuê gần trung tâm thương mại không?
+      - Tìm cho tôi [căn hộ](property_type) có sẵn trong vòng 10km từ trung tâm thành phố
+      - Bạn có thể tìm giúp tôi một [nhà riêng](property_type) cho thuê cho gia đình không?
+      - Tôi muốn thuê [biệt thự](property_type) ở tầng trên cùng của tòa nhà
+      - Cần tìm một [căn hộ](property_type) gần ga tàu hoặc bến xe bus
+      - Tôi cần một [căn hộ](property_type) với phòng khách rộng lớn
+      - Tìm cho tôi [phòng trọ](property_type) ở khu vực an ninh tốt
+      - Có [chung cư](property_type) cho thuê có phòng tắm đứng không?
 
   - intent: provide_price
     examples: |
       - giá từ [1 triệu]{"entity": "price", "role": "lower_bound"} đến [3 triệu]{ "entity": "price", "role": "upper_bound"}
       - Giá: [1tr]{"entity": "price", "role": "lower_bound"} - [3tr]{"entity": "price", "role": "upper_bound"}
+
+  - intent: provide_district
+    examples: |
+      - ở [quận 1](district)
 
   - lookup: property_type
     examples: |
@@ -57,3 +87,10 @@ nlu:
   - regex: price
     examples: |
       - (\d)+((.|,)(\d))*( )*(triệu|tr|triệu đồng|tr/tháng)
+
+  - regex: district
+    examples: |
+      - (quận|q)( )*(\d)+
+      - (quận|q)?( )*(Bình Thạnh|Gò Vấp|Tân Bình|Tân Phú|Phú Nhuận|Bình Tân)
+      - (huyện|H)( )*()+(Cần Giờ|Củ Chi|Hóc Môn|Nhà Bè|Bình Chánh)
+      - (thành phố|tp)( )*(Thủ Đức)

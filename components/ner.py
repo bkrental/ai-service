@@ -20,34 +20,93 @@ from rasa.shared.nlu.training_data.message import Message
 import rasa.shared.utils.io
 
 
+def convert_to_rasa_format(entities: List[Dict[Text, Any]]) -> List[Dict[Text, Any]]:
+    rasa_entities = []
+    current_entity = None
+    current_entity_text = ""
+    for entity in entities:
+        if entity["entity"].startswith("B-"):
+            if current_entity is not None:
+                rasa_entities.append(
+                    {
+                        "start": current_entity["start"],
+                        "end": current_entity["end"],
+                        "value": current_entity_text,
+                        "entity": current_entity["entity"][2:],  # Remove the B- prefix
+                        "confidence_entity": str(current_entity["score"]),
+                    }
+                )
+            current_entity = entity
+            current_entity_text = entity["word"]
+        elif entity["entity"].startswith("I-"):
+            if current_entity is not None:
+                current_entity_text += " " + entity["word"]
+                current_entity["end"] = entity["end"]
+                current_entity["score"] = min(current_entity["score"], entity["score"])
+        else:
+            # Invalid entity format, skip
+            pass
+
+    if current_entity is not None:
+        rasa_entities.append(
+            {
+                "start": current_entity["start"],
+                "end": current_entity["end"],
+                "value": current_entity_text,
+                "entity": current_entity["entity"][2:],  # Remove the B- prefix
+                "confidence_entity": str(current_entity["score"]),
+            }
+        )
+    return rasa_entities
+
+
 @DefaultV1Recipe.register(
     DefaultV1Recipe.ComponentType.ENTITY_EXTRACTOR, is_trainable=False
 )
 class LocationExtractor(GraphComponent, EntityExtractorMixin):
     @staticmethod
-    def required_packages() -> List[Text]:
-        return []
+    def get_default_config() -> Dict[Text, Any]:
+        return {"dimensions": ["LOCATION", "ORGANIZATION"], "threshold": 0.5}
 
-    @staticmethod
+    @classmethod
     def create(
+        cls,
         config: Dict[Text, Any],
         model_storage: ModelStorage,
         resource: Resource,
         execution_context: ExecutionContext,
     ) -> LocationExtractor:
-        return LocationExtractor()
+        return cls(config)
 
-    def __init__(self) -> None:
+    def __init__(self, config: Dict[Text, Any]) -> None:
         tokenizer = AutoTokenizer.from_pretrained("NlpHUST/ner-vietnamese-electra-base")
         model = AutoModelForTokenClassification.from_pretrained(
             "NlpHUST/ner-vietnamese-electra-base"
         )
         self.nlp = pipeline("ner", model=model, tokenizer=tokenizer)
+        self.component_config = config
 
-    def process(self, message: Message, **kwargs: Any) -> None:
-        if TEXT in message.data:
-            response = requests.post(self.url, json={"text": message.data[TEXT]})
-            response.raise_for_status()
-            extracted = response.json()
-            entities = message.get(ENTITIES, []) + extracted
-            message.set(ENTITIES, entities, add_to_output=True)
+    # @staticmethod
+    # def filter_irrelevant_entities(entities: list, dimensions, threshold=0.5) -> list:
+    #     filtered = []
+    #     for entity in entities:
+    #         if (
+    #             entity["entity"] in dimensions
+    #             and float(entity["confidence_entity"]) > threshold
+    #         ):
+    #             filtered.append(entity)
+    #     return filtered
+
+    def process(self, messages: List[Message]) -> List[Message]:
+        for message in messages:
+            matches = self.nlp(message.get(TEXT))
+            all_extracted = convert_to_rasa_format(matches)
+            dimensions = self.component_config["dimensions"]
+            threshold = self.component_config.get("threshold", 0.5)
+            extracted = self.filter_irrelevant_entities(all_extracted, dimensions)
+            extracted = self.add_extractor_name(extracted)
+            message.set(
+                ENTITIES, message.get(ENTITIES, []) + extracted, add_to_output=True
+            )
+
+        return messages

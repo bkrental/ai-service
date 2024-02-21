@@ -9,6 +9,8 @@ intents:
 entities:
   - transaction_type
   - property_type
+  - LOCATION
+  - ORGANIZATION
   - price:
       roles:
         - lower_bound
@@ -22,14 +24,14 @@ slots:
         entity: property_type
 
   price_lower_bound:
-    type: float
+    type: text
     mappings:
       - type: from_entity
         entity: price
         role: lower_bound
 
   price_upper_bound:
-    type: float
+    type: text
     mappings:
       - type: from_entity
         entity: price

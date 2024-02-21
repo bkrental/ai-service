@@ -38,14 +38,14 @@ class ViTokenizer(Tokenizer):
         super().__init__(config)
 
         # # Download VnCoreNLP model if not exists
-        # vncorenlp_path = os.getenv("VNCORENLP_PATH", "vncorenlp")
+        vncorenlp_path = os.getenv("VNCORENLP_PATH", "vncorenlp")
         # # py_vncorenlp.download_model(model_path)
 
         # # Load VnCoreNLP model
-        # self.tokenizer = py_vncorenlp.VnCoreNLP(
-        #     annotators=["wseg"], save_dir=vncorenlp_path
-        # )
-        self.tokenizer = word_tokenize
+        self.tokenizer = py_vncorenlp.VnCoreNLP(
+            annotators=["wseg"], save_dir=vncorenlp_path
+        )
+        # self.tokenizer = word_tokenize
 
     @classmethod
     def create(
@@ -60,11 +60,11 @@ class ViTokenizer(Tokenizer):
     def tokenize(self, message: Message, attribute: Text) -> List[Token]:
         text = message.get(attribute)
 
-        words = self.tokenizer(text)
-        # words = self.tokenizer.word_segment(text)[0].split()
+        # words = self.tokenizer(text)
+        words = self.tokenizer.word_segment(text)[0].split()
 
         # # Remove underscore from word
-        # words = [word.replace("_", " ") for word in words]
+        words = [word.replace("_", " ") for word in words]
         tokens = self._convert_words_to_tokens(words, text)
 
         return self._apply_token_pattern(tokens)
