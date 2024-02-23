@@ -14,7 +14,6 @@ nlu:
       - bắt đầu
       - chào bạn
       - chào bot
-
   - intent: bye
     examples: |
       - kết thúc
@@ -23,17 +22,16 @@ nlu:
       - goodbye
       - good bye
       - thanks, bye
-
   - intent: search_properties
     examples: |
       - Tìm [phòng trọ](property_type)
       - Gợi ý các căn [chung cư](property_type)
       - Tôi muốn tìm [nhà](property_type)
       - Tìm [nhà nguyên căn](property_type)
-      - Tìm [phòng trọ](property_type) quận 10 giá từ [3 triệu]{"entity": "price", "role": "lower_bound"} đến [4 triệu]{ "entity": "price", "role": "upper_bound"}
-      - Mình cần tìm [chung cư](property_type) giá từ [2 triệu]{"entity": "price", "role": "lower_bound"} đến [5 triệu]{ "entity": "price", "role": "upper_bound"}
-      - [Nhà trọ](property_type) giá từ [10 triệu]{"entity": "price", "role": "lower_bound"} đến [30 triệu]{ "entity": "price", "role": "upper_bound"}
-      - Cần tìm [sleepbox](property_type) giá tầm [1 tr/tháng]{ "entity": "price", "role": "lower_bound"}
+      - Tìm [phòng trọ](property_type) quận 10 giá từ [3 triệu]{"entity": "price", "role": "lower_bound"} đến [4 triệu]{"entity": "price", "role": "upper_bound"}
+      - Mình cần tìm [chung cư](property_type) giá từ [2 triệu]{"entity": "price", "role": "lower_bound"} đến [5 triệu]{"entity": "price", "role": "upper_bound"}
+      - [Nhà trọ](property_type) giá từ [10 triệu]{"entity": "price", "role": "lower_bound"} đến [30 triệu]{"entity": "price", "role": "upper_bound"}
+      - Cần tìm [sleepbox](property_type) giá tầm [1 tr/tháng]{"entity": "price", "role": "lower_bound"}
       - Mình muón tìm các [ký túc xá](property_type)
       - Các [căn chung cư](property_type) giá rẻ
       - Thuê (căn hộ)[property_type] giá dưới [5 triệu]{"entity": "price", "role": "upper_bound"}
@@ -57,15 +55,50 @@ nlu:
       - Tôi cần một [căn hộ](property_type) với phòng khách rộng lớn
       - Tìm cho tôi [phòng trọ](property_type) ở khu vực an ninh tốt
       - Có [chung cư](property_type) cho thuê có phòng tắm đứng không?
+      - Tao muốn tìm [phòng trọ](property_type) 1 người, kinh phí dưới [2 triệu]{"entity": "price", "role": "upper_bound"} đồng, gần [trường đại học Bách Khoa CS1](organization), [quận 10](district)
+      - Tôi muốn tìm phòng 1 người gần đại học Bách Khoa CS1
+      - [Nhà trọ](property_type) [quận 5](district) giá tầm [3tr]{"entity": "\"entity\"", "value": " \"price\", \"role\": \"lower_bound\""} 2 phòng ngủ
+      - [Nhà trọ](property_type) [quận 8](district) gần [ĐH Bách Khoa](organization) giá tầm [3tr]{"entity": "\"entity\"", "value": " \"price\", \"role\": \"lower_bound\""}
+      - Tìm [phòng trọ](property_type) [quận 10](district), [quận 5](district), [tân bình](district)
+      - Tìm chung cư [q1](district), [q2](district), [q3](district) giá từ [1tr]{"entity": "price", "role": "lower_bound"} - [3tr]{"entity": "price", "role": "upper_bound"}
+      - Tìm nhà trọ huyện [Cần Giờ](district) giá từ [1]{"entity": "price", "role": "lower_bound"} - [3tr/thg]{"entity": "price", "role": "upper_bound"}
+      - Tìm trọ gần khu vực quận [q5](district)
+      - Tìm nhà trọ ở các [quận 2](district), [3](district), [10](district)
+      - Tìm trọ gần khu vực [quận 10](district), [quận bình thạnh](district)
+      - tìm [phòng trọ](property_type)
 
   - intent: provide_price
     examples: |
-      - giá từ [1 triệu]{"entity": "price", "role": "lower_bound"} đến [3 triệu]{ "entity": "price", "role": "upper_bound"}
+      - giá từ [1 triệu]{"entity": "price", "role": "lower_bound"} đến [3 triệu]{"entity": "price", "role": "upper_bound"}
       - Giá: [1tr]{"entity": "price", "role": "lower_bound"} - [3tr]{"entity": "price", "role": "upper_bound"}
 
   - intent: provide_district
     examples: |
       - ở [quận 1](district)
+      - khu vực [quận 2](district)
+      - [quận 3](district)
+      - tại huyện [Cần Giờ](district)
+      - Tôi muốm tìm ở [quận 4](district)
+      - [quận 5](district)
+      - [quận tân bình](district)
+      - [quận tân phú](district)
+      - [huyện bình chánh](district)
+      - nằm ở [quận 7](district)
+      - ở [thành phố thủ đức](district)
+      - trung tâm [quận 10](district)
+      - khu vực [quận 5](district), [quận 10](district), [tân bình](district)
+      - trong khu vực [p5](district), [q10](district), [q tân bình](district)
+
+  - regex: district
+    examples: |
+      - (huyện|H)( )*()+(Cần Giờ|Củ Chi|Hóc Môn|Nhà Bè|Bình Chánh)
+      - (quận|q)( )*(\d)+
+      - (quận|q)?( )*(Bình Thạnh|Gò Vấp|Tân Bình|Tân Phú|Phú Nhuận|Bình Tân)
+      - (thành phố|tp)( )*(Thủ Đức)
+
+  - regex: price
+    examples: |
+      - (\d)+((.|,)(\d))*( )*(triệu|tr|triệu đồng|tr/tháng)
 
   - lookup: property_type
     examples: |
@@ -83,14 +116,3 @@ nlu:
       - ký túc xá
       - phòng trọ sinh viên
       - sleepbox
-
-  - regex: price
-    examples: |
-      - (\d)+((.|,)(\d))*( )*(triệu|tr|triệu đồng|tr/tháng)
-
-  - regex: district
-    examples: |
-      - (quận|q)( )*(\d)+
-      - (quận|q)?( )*(Bình Thạnh|Gò Vấp|Tân Bình|Tân Phú|Phú Nhuận|Bình Tân)
-      - (huyện|H)( )*()+(Cần Giờ|Củ Chi|Hóc Môn|Nhà Bè|Bình Chánh)
-      - (thành phố|tp)( )*(Thủ Đức)

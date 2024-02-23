@@ -1,16 +1,17 @@
 version: "3.1"
-
 intents:
   - bye
   - greet
-  - search_properties
+  - provide_district
   - provide_price
+  - search_properties
 
 entities:
-  - transaction_type
   - property_type
-  - LOCATION
-  - ORGANIZATION
+  - district
+  - transaction_type
+  - location
+  - organization
   - price:
       roles:
         - lower_bound
@@ -37,6 +38,12 @@ slots:
         entity: price
         role: upper_bound
 
+  districts:
+    type: list
+    mappings:
+      - type: from_entity
+        entity: district
+
 responses:
   utter_greet:
     - text: Xin chào, tôi có thể giúp gì cho bạn?
@@ -56,14 +63,14 @@ responses:
   utter_ask_property_type:
     - text: Bạn muốn tìm loại nhà trọ nào? (phòng trọ, nhà nguyên căn, chung cư, nhà mặt phố, nhà đất, đất nền, ký túc xá, sleepbox, ...)
 
-  utter_ask_price_range:
-    - text: Bạn muốn tìm nhà trọ với mức giá nào? (từ giá thấp nhất đến giá cao nhất)
-
-  utter_ask_search_properties_form_price_lower_bound:
+  utter_ask_price_lower_bound:
     - text: Bạn muốn tìm nhà trọ với mức giá thấp nhất là bao nhiêu?
 
-  utter_ask_search_properties_form_price_upper_bound:
+  utter_ask_price_upper_bound:
     - text: Bạn muốn tìm nhà trọ với mức giá cao nhất là bao nhiêu?
+
+  utter_ask_districts:
+    - text: Bạn muốn tìm nhà trọ ở khu vực nào?
 
 forms:
   search_properties_form:
@@ -71,10 +78,12 @@ forms:
       - property_type
       - price_lower_bound
       - price_upper_bound
+      - districts
+
+actions:
+  - action_search_properties
+  - validate_search_properties_form
 
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
-
-actions:
-  - action_search_properties

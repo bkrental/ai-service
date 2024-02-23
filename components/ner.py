@@ -32,7 +32,7 @@ def convert_to_rasa_format(entities: List[Dict[Text, Any]]) -> List[Dict[Text, A
                         "start": current_entity["start"],
                         "end": current_entity["end"],
                         "value": current_entity_text,
-                        "entity": current_entity["entity"][2:],  # Remove the B- prefix
+                        "entity": current_entity["entity"][2:].lower(),
                         "confidence_entity": str(current_entity["score"]),
                     }
                 )
@@ -53,7 +53,7 @@ def convert_to_rasa_format(entities: List[Dict[Text, Any]]) -> List[Dict[Text, A
                 "start": current_entity["start"],
                 "end": current_entity["end"],
                 "value": current_entity_text,
-                "entity": current_entity["entity"][2:],  # Remove the B- prefix
+                "entity": current_entity["entity"][2:].lower(),
                 "confidence_entity": str(current_entity["score"]),
             }
         )
@@ -63,7 +63,7 @@ def convert_to_rasa_format(entities: List[Dict[Text, Any]]) -> List[Dict[Text, A
 @DefaultV1Recipe.register(
     DefaultV1Recipe.ComponentType.ENTITY_EXTRACTOR, is_trainable=False
 )
-class LocationExtractor(GraphComponent, EntityExtractorMixin):
+class HUSTEntityExtractor(GraphComponent, EntityExtractorMixin):
     @staticmethod
     def get_default_config() -> Dict[Text, Any]:
         return {"dimensions": ["LOCATION", "ORGANIZATION"], "threshold": 0.5}
@@ -75,35 +75,38 @@ class LocationExtractor(GraphComponent, EntityExtractorMixin):
         model_storage: ModelStorage,
         resource: Resource,
         execution_context: ExecutionContext,
-    ) -> LocationExtractor:
+    ) -> HUSTEntityExtractor:
         return cls(config)
 
     def __init__(self, config: Dict[Text, Any]) -> None:
-        tokenizer = AutoTokenizer.from_pretrained("NlpHUST/ner-vietnamese-electra-base")
-        model = AutoModelForTokenClassification.from_pretrained(
-            "NlpHUST/ner-vietnamese-electra-base"
-        )
+        model_name = "NlpHUST/ner-vietnamese-electra-base"
+        tokenizer = AutoTokenizer.from_pretrained(model_name)
+        model = AutoModelForTokenClassification.from_pretrained(model_name)
+
         self.nlp = pipeline("ner", model=model, tokenizer=tokenizer)
         self.component_config = config
 
-    # @staticmethod
-    # def filter_irrelevant_entities(entities: list, dimensions, threshold=0.5) -> list:
-    #     filtered = []
-    #     for entity in entities:
-    #         if (
-    #             entity["entity"] in dimensions
-    #             and float(entity["confidence_entity"]) > threshold
-    #         ):
-    #             filtered.append(entity)
-    #     return filtered
+    @staticmethod
+    def filter_irrelevant_entities(entities: list, dimensions, threshold=0.5) -> list:
+        extracted = []
+        for entity in entities:
+            if (
+                entity["entity"] in dimensions
+                and float(entity["confidence_entity"]) > threshold
+            ):
+                extracted.append(entity)
+        return extracted
 
     def process(self, messages: List[Message]) -> List[Message]:
+        threshold = self.component_config["threshold"]
+        dimensions = self.component_config["dimensions"]
+
         for message in messages:
             matches = self.nlp(message.get(TEXT))
             all_extracted = convert_to_rasa_format(matches)
-            dimensions = self.component_config["dimensions"]
-            threshold = self.component_config.get("threshold", 0.5)
-            extracted = self.filter_irrelevant_entities(all_extracted, dimensions)
+            extracted = self.filter_irrelevant_entities(
+                all_extracted, dimensions, threshold
+            )
             extracted = self.add_extractor_name(extracted)
             message.set(
                 ENTITIES, message.get(ENTITIES, []) + extracted, add_to_output=True

@@ -23,15 +23,14 @@ pipeline:
     analyzer: char_wb
     min_ngram: 1
     max_ngram: 4
-  - name: components.ner.LocationExtractor
-    dimensions: ["LOCATION", "ORGANIZATION"]
-  #   threshold: 0.7
-  # - name: LanguageModelFeaturizer
-  #   model_name: "bert"
-  #   model_weights: "bert-base-multilingual-cased"
+  - name: components.ner.HUSTEntityExtractor
+    dimensions: ["organization"]
+    threshold: 0.7
+  - name: CRFEntityExtractor
   - name: DIETClassifier
     epochs: 100
     constrain_similarities: true
+    entity_recognition: false
   - name: EntitySynonymMapper
   - name: ResponseSelector
     epochs: 100
