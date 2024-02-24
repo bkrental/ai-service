@@ -27,10 +27,26 @@ pipeline:
     dimensions: ["organization"]
     threshold: 0.7
   - name: CRFEntityExtractor
+    features:
+      [
+        ["low", "title", "upper"],
+        [
+          "bias",
+          "low",
+          "prefix5",
+          "prefix2",
+          "suffix5",
+          "suffix3",
+          "suffix2",
+          "digit",
+          "pattern",
+        ],
+        ["low", "title", "upper"],
+      ]
   - name: DIETClassifier
     epochs: 100
     constrain_similarities: true
-    entity_recognition: false
+    entity_recognition: true
   - name: EntitySynonymMapper
   - name: ResponseSelector
     epochs: 100

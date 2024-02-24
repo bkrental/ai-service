@@ -3,8 +3,11 @@ intents:
   - bye
   - greet
   - provide_district
-  - provide_price
   - search_properties
+  - provide_price_range
+  - provide_price_lower_bound
+  - provide_price_upper_bound
+  - provide_price_average
 
 entities:
   - property_type
@@ -16,6 +19,7 @@ entities:
       roles:
         - lower_bound
         - upper_bound
+        - average
 
 slots:
   property_type:
@@ -37,6 +41,13 @@ slots:
       - type: from_entity
         entity: price
         role: upper_bound
+
+  price_average:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: price
+        role: average
 
   districts:
     type: list
@@ -63,6 +74,9 @@ responses:
   utter_ask_property_type:
     - text: Bạn muốn tìm loại nhà trọ nào? (phòng trọ, nhà nguyên căn, chung cư, nhà mặt phố, nhà đất, đất nền, ký túc xá, sleepbox, ...)
 
+  utter_ask_price_average:
+    - text: Bạn muốn tìm nhà trọ với mức giá khoảng bao nhiêu?
+
   utter_ask_price_lower_bound:
     - text: Bạn muốn tìm nhà trọ với mức giá thấp nhất là bao nhiêu?
 
@@ -76,6 +90,7 @@ forms:
   search_properties_form:
     required_slots:
       - property_type
+      - price_average
       - price_lower_bound
       - price_upper_bound
       - districts

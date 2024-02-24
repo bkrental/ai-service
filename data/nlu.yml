@@ -14,6 +14,7 @@ nlu:
       - bắt đầu
       - chào bạn
       - chào bot
+
   - intent: bye
     examples: |
       - kết thúc
@@ -22,6 +23,7 @@ nlu:
       - goodbye
       - good bye
       - thanks, bye
+
   - intent: search_properties
     examples: |
       - Tìm [phòng trọ](property_type)
@@ -57,8 +59,8 @@ nlu:
       - Có [chung cư](property_type) cho thuê có phòng tắm đứng không?
       - Tao muốn tìm [phòng trọ](property_type) 1 người, kinh phí dưới [2 triệu]{"entity": "price", "role": "upper_bound"} đồng, gần [trường đại học Bách Khoa CS1](organization), [quận 10](district)
       - Tôi muốn tìm phòng 1 người gần đại học Bách Khoa CS1
-      - [Nhà trọ](property_type) [quận 5](district) giá tầm [3tr]{"entity": "\"entity\"", "value": " \"price\", \"role\": \"lower_bound\""} 2 phòng ngủ
-      - [Nhà trọ](property_type) [quận 8](district) gần [ĐH Bách Khoa](organization) giá tầm [3tr]{"entity": "\"entity\"", "value": " \"price\", \"role\": \"lower_bound\""}
+      - [Nhà trọ](property_type) [quận 5](district) giá tầm [3tr]{"entity": "price", "role": "lower_bound"} 2 phòng ngủ
+      - [Nhà trọ](property_type) [quận 8](district) gần [ĐH Bách Khoa](organization) giá tầm [3tr]{"entity": "price", "role": "lower_bound"}
       - Tìm [phòng trọ](property_type) [quận 10](district), [quận 5](district), [tân bình](district)
       - Tìm chung cư [q1](district), [q2](district), [q3](district) giá từ [1tr]{"entity": "price", "role": "lower_bound"} - [3tr]{"entity": "price", "role": "upper_bound"}
       - Tìm nhà trọ huyện [Cần Giờ](district) giá từ [1]{"entity": "price", "role": "lower_bound"} - [3tr/thg]{"entity": "price", "role": "upper_bound"}
@@ -66,11 +68,63 @@ nlu:
       - Tìm nhà trọ ở các [quận 2](district), [3](district), [10](district)
       - Tìm trọ gần khu vực [quận 10](district), [quận bình thạnh](district)
       - tìm [phòng trọ](property_type)
-
-  - intent: provide_price
+      - Mình cần tìm phòng kinh phí [4tr5]("entity": "price", "role": "upper_bound") đổ lại.
+      - em tìm phòng có ban công , nội thất cơ bản, [4tr5]{"entity": "price", "role": "upper_bound"} quay đầu ạ
+      - Em đang tìm kiếm [phòng trọ] [3]{"entity": "price", "role": "lower_bound"} - [5 triệu]{"entity": "price", "role": "upper_bound"}
+      - Cần tìm [phòng trọ](property_type) khu vực [Bình Thạnh]district), giá < [5tr]{"entity": "price", "role": "upper_bound"}
+      - E cần phòng ở 2 người 2 xe khu vực [bình thạnh](district) dưới [4tr5]{"entity": "price", "role": "upper_bound"} ạ
+      - Cần tìm [studio](property_type) full nội thất giá <[5tr]{"entity": "price", "role": "upper_bound"}
+      - Em cần tìm [phòng](property_type) khu vực chợ bà chiểu, Tài chính [3tr]{"entity": "price", "role": "average"}
+      - Mình cần tìm phòng trọ tầm [3]{"entity": "price", "role": "lower_bound"}-[3,5tr]{"entity": "price", "role": "upper_bound"}
+  - intent: provide_price_range
     examples: |
       - giá từ [1 triệu]{"entity": "price", "role": "lower_bound"} đến [3 triệu]{"entity": "price", "role": "upper_bound"}
       - Giá: [1tr]{"entity": "price", "role": "lower_bound"} - [3tr]{"entity": "price", "role": "upper_bound"}
+      - Từ [2 triệu]{"entity": "price", "role": "lower_bound"} đến [5 triệu]{"entity": "price", "role": "upper_bound"}
+      - [2]{"entity": "price", "role": "lower_bound"} - [5 triệu]{"entity": "price", "role": "upper_bound"}
+
+  - intent: provide_price_lower_bound
+    examples: |
+      - giá từ [1 triệu]{"entity": "price", "role": "lower_bound"}
+      - Giá: [1tr]{"entity": "price", "role": "lower_bound"}
+      - Từ [2 triệu]{"entity": "price", "role": "lower_bound"}
+      - Chỉ hơn [2]{"entity": "price", "role": "lower_bound"}
+      - Trên [3 triệu]{"entity": "price", "role": "lower_bound"}
+      - >= [3 triệu]{"entity": "price", "role": "lower_bound"}
+      - Hơn [3 triệu]{"entity": "price", "role": "lower_bound"}
+      - Giá lớn hơn [3 triệu]{"entity": "price", "role": "lower_bound"}
+      - Không dưới [3 triệu]{"entity": "price", "role": "lower_bound"}
+
+  - intent: provide_price_upper_bound
+    examples: |
+      - giá dưới [3 triệu]{"entity": "price", "role": "upper_bound"}
+      - Giá: dưới [3tr]{"entity": "price", "role": "upper_bound"}
+      - Dưới [5 triệu]{"entity": "price", "role": "upper_bound"}
+      - Chỉ [2 triệu]{"entity": "price", "role": "upper_bound"}
+      - Dưới [2.5 triệu]{"entity": "price", "role": "upper_bound"}
+      - Dưới [3 triệu]{"entity": "price", "role": "upper_bound"}
+      - Dưới [5 triệu]{"entity": "price", "role": "upper_bound"}
+      - < [1 triệu]{"entity": "price", "role": "upper_bound"}
+      - Không quá [2 triệu]{"entity": "price", "role": "upper_bound"}
+      - Nhỏ hơn [3 triệu]{"entity": "price", "role": "upper_bound"}
+      - Giá bé hơn [3tr/thang]{"entity": "price", "role": "upper_bound"}
+      - Ít hơn [5.5 triệu]{"entity": "price", "role": "upper_bound"}
+      - [2.8tr]{"entity": "price", "role": "upper_bound"} đổ lại
+      - [10 triệu]{"entity": "price", "role": "upper_bound"} quay đầu
+
+  - intent: provide_price_average
+    examples: |
+      - [1 triệu]{"entity": "price", "role": "average"}
+      - Khoảng [2 triệu]{"entity": "price", "role": "average"}
+      - Tầm [3 triệu]{"entity": "price", "role": "average"}
+      - Tầm khoảng [4 triệu]{"entity": "price", "role": "average"}
+      - [5 tr/thang]{"entity": "price", "role": "average"}
+      - Giá trung bình [6 triệu]{"entity": "price", "role": "average"}
+      - giá [2 triệu/tháng]{"entity": "price", "role": "average"}
+      - Giá khoảng [3 triệu/tháng]{"entity": "price", "role": "average"}
+      - Giá chừng [2tr/tháng]{"entity": "price", "role": "average"}
+      - Giá tầm [10trieu]{"entity": "price", "role": "average"}
+      - Khoảng chừng [5 triệu/tháng]{"entity": "price", "role": "average"}
 
   - intent: provide_district
     examples: |
@@ -98,7 +152,7 @@ nlu:
 
   - regex: price
     examples: |
-      - (\d)+((.|,)(\d))*( )*(triệu|tr|triệu đồng|tr/tháng)
+      - (\d+((.|,)\d)+)+( )*(triệu|tr|trieu)?(/thg|/tháng)?
 
   - lookup: property_type
     examples: |

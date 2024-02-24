@@ -3,8 +3,20 @@ from thefuzz import fuzz
 from unidecode import unidecode
 
 
-def transform_price(price: str) -> float:
-    return 0
+def normalize_price(price: str) -> float:
+    milion_regex = r"((\d+)(.\d+)?)(\s*(triệu|trieu|tr))"
+    bilion_regex = r"((\d+)(.\d+)?)(\s*(tỷ|ty))"
+    thousand_regex = r"((\d+)(.\d+)?)(\s*(nghìn|nghin|n|k))"
+
+    bilion_match = re.search(bilion_regex, price.lower())
+    milion_match = re.search(milion_regex, price.lower())
+    thousand_match = re.search(thousand_regex, price.lower())
+
+    bilion = float(bilion_match.group(1)) if bilion_match else 0
+    milion = float(milion_match.group(1)) if milion_match else 0
+    thousand = float(thousand_match.group(1)) if thousand_match else 0
+
+    return bilion * 1000 + milion + thousand / 1000
 
 
 def normalize_district(district_pred: str) -> str:
@@ -74,3 +86,8 @@ def normalize_district(district_pred: str) -> str:
             most_similar_sample = district_sample
 
     return most_similar_sample
+
+
+print(normalize_price("20 tỷ, 1.5 triệu/thang"))
+print(normalize_price("10 triệu/thang"))
+print(normalize_price("30k"))
