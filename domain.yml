@@ -2,12 +2,9 @@ version: "3.1"
 intents:
   - bye
   - greet
+  - provide_price
   - provide_district
   - search_properties
-  - provide_price_range
-  - provide_price_lower_bound
-  - provide_price_upper_bound
-  - provide_price_average
 
 entities:
   - property_type

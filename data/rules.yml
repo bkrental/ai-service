@@ -16,40 +16,13 @@ rules:
       - intent: provide_district
       - action: action_search_properties
 
-  - rule: Update the price slot_1
+  - rule: Update the price slot
     condition:
       - slot_was_set:
           - property_type: true
           - districts: true
     steps:
-      - intent: provide_price_range
-      - action: action_search_properties
-
-  - rule: Update the price slot_2
-    condition:
-      - slot_was_set:
-          - property_type: true
-          - districts: true
-    steps:
-      - intent: provide_price_lower_bound
-      - action: action_search_properties
-
-  - rule: Update the price slot_3
-    condition:
-      - slot_was_set:
-          - property_type: true
-          - districts: true
-    steps:
-      - intent: provide_price_upper_bound
-      - action: action_search_properties
-
-  - rule: Update the price slot_4
-    condition:
-      - slot_was_set:
-          - property_type: true
-          - districts: true
-    steps:
-      - intent: provide_price_average
+      - intent: provide_price
       - action: action_search_properties
 
   - rule: Submit search properties form

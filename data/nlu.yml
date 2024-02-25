@@ -76,15 +76,13 @@ nlu:
       - Cần tìm [studio](property_type) full nội thất giá <[5tr]{"entity": "price", "role": "upper_bound"}
       - Em cần tìm [phòng](property_type) khu vực chợ bà chiểu, Tài chính [3tr]{"entity": "price", "role": "average"}
       - Mình cần tìm phòng trọ tầm [3]{"entity": "price", "role": "lower_bound"}-[3,5tr]{"entity": "price", "role": "upper_bound"}
-  - intent: provide_price_range
+
+  - intent: provide_price
     examples: |
       - giá từ [1 triệu]{"entity": "price", "role": "lower_bound"} đến [3 triệu]{"entity": "price", "role": "upper_bound"}
       - Giá: [1tr]{"entity": "price", "role": "lower_bound"} - [3tr]{"entity": "price", "role": "upper_bound"}
       - Từ [2 triệu]{"entity": "price", "role": "lower_bound"} đến [5 triệu]{"entity": "price", "role": "upper_bound"}
       - [2]{"entity": "price", "role": "lower_bound"} - [5 triệu]{"entity": "price", "role": "upper_bound"}
-
-  - intent: provide_price_lower_bound
-    examples: |
       - giá từ [1 triệu]{"entity": "price", "role": "lower_bound"}
       - Giá: [1tr]{"entity": "price", "role": "lower_bound"}
       - Từ [2 triệu]{"entity": "price", "role": "lower_bound"}
@@ -94,9 +92,6 @@ nlu:
       - Hơn [3 triệu]{"entity": "price", "role": "lower_bound"}
       - Giá lớn hơn [3 triệu]{"entity": "price", "role": "lower_bound"}
       - Không dưới [3 triệu]{"entity": "price", "role": "lower_bound"}
-
-  - intent: provide_price_upper_bound
-    examples: |
       - giá dưới [3 triệu]{"entity": "price", "role": "upper_bound"}
       - Giá: dưới [3tr]{"entity": "price", "role": "upper_bound"}
       - Dưới [5 triệu]{"entity": "price", "role": "upper_bound"}
@@ -111,9 +106,6 @@ nlu:
       - Ít hơn [5.5 triệu]{"entity": "price", "role": "upper_bound"}
       - [2.8tr]{"entity": "price", "role": "upper_bound"} đổ lại
       - [10 triệu]{"entity": "price", "role": "upper_bound"} quay đầu
-
-  - intent: provide_price_average
-    examples: |
       - [1 triệu]{"entity": "price", "role": "average"}
       - Khoảng [2 triệu]{"entity": "price", "role": "average"}
       - Tầm [3 triệu]{"entity": "price", "role": "average"}
