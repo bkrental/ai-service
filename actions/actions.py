@@ -97,7 +97,7 @@ class ValidateSearchPropertiesFrom(FormValidationAction):
     ) -> Dict[Text, Any]:
         print(slot_value)
         districts = set([normalize_district(district) for district in slot_value])
-        districts = set([district for district in districts if len(district) > 0])
+        districts = [district for district in districts if len(district) > 0]
 
         if len(districts) != 0:
             print(f"Form validated: {districts}")
@@ -120,12 +120,13 @@ class ActionSearchProperties(Action):
 
     def run(self, dispatcher, tracker, domain):
 
-        property_type = tracker.get_slot("property_type")
-        price_lower_bound = tracker.get_slot("price_lower_bound")
-        price_upper_bound = tracker.get_slot("price_upper_bound")
-        districts = ", ".join(tracker.get_slot("districts"))
+        # property_type = tracker.get_slot("property_type")
+        # price_lower_bound = tracker.get_slot("price_lower_bound")
+        # price_upper_bound = tracker.get_slot("price_upper_bound")
+        # districts = ", ".join(tracker.get_slot("districts"))
 
-        dispatcher.utter_message(
-            text=f"Đây là kết quả các {property_type} tại {districts} có giá từ {price_lower_bound} đến {price_upper_bound}"
-        )
-        return []
+        # dispatcher.utter_message(
+        #     text=f"Đây là kết quả các {property_type} tại {districts} có giá từ {price_lower_bound} đến {price_upper_bound}"
+        # )
+
+        return dispatcher.utter_message(text="Đây là kết quả tìm kiếm của bạn")
