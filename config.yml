@@ -23,9 +23,9 @@ pipeline:
     analyzer: char_wb
     min_ngram: 1
     max_ngram: 4
-  - name: components.ner.HUSTEntityExtractor
-    dimensions: ["organization"]
-    threshold: 0.7
+  # - name: components.ner.HUSTEntityExtractor
+  #   dimensions: ["organization"]
+  #   threshold: 0.7
   - name: CRFEntityExtractor
     features:
       [

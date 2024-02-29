@@ -4,3 +4,5 @@ venv/
 models/
 .python-version
 components/vncorenlp/VnCoreNLP-1.2.jar
+.keras
+credentials.prod.yml

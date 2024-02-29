@@ -1,0 +1,18 @@
+version: "3.1"
+
+services:
+  rasa:
+    image: khalosa/rasa-aarch64:latest
+    ports:
+      - 5005:5005
+    volumes:
+      - ./:/app
+    command: run -m models --enable-api --cors \"*\" --debug --endpoints endpoints.prod.yml --credentials credentials.prod.yml
+
+  action_server:
+    build:
+      context: .
+      dockerfile: Dockerfile.actions
+    platform: linux/amd64
+    ports:
+      - 5055:5055
