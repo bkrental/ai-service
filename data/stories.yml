@@ -1,0 +1,31 @@
+# version: "3.1"
+
+# stories:
+#   - story: property_type interjection
+#     steps:
+#       - intent: search_properties
+#       - action: search_properties_form
+#       - active_loop: search_properties_form
+#       - slot_was_set:
+#           - requested_slot: property_type
+#       - intent: explain
+#       - action: utter_explain_property_type
+#       - action: search_properties_form
+
+#   - story: transaction_type interjection
+#     steps:
+#       - intent: search_properties
+#       - action: search_properties_form
+#       - active_loop: search_properties_form
+#       - slot_was_set:
+#           - requested_slot: transaction_type
+#       - intent: explain
+#       - action: utter_explain_transaction_type
+#       - action: search_properties_form
+
+#   - story: handle district change
+#     steps:
+#       - intent: provide_district
+#       - slot_was_set:
+#           - district: "quận 1"
+#       - action: action_confirm_district

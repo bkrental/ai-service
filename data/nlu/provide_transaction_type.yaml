@@ -1,0 +1,16 @@
+version: "3.1"
+nlu:
+  - intent: provide_transaction_type
+    examples: |
+      - để [thuê](transaction_type)
+      - để [mua](transaction_type)
+      - [thuê](transaction_type)
+      - Tôi muốn [mua](transaction_type)
+      - Tôi muốn [thuê](transaction_type)
+      - để [thuê](transaction_type)
+      - Tôi quan tâm đến việc [mua](transaction_type)
+      - Tôi quan tâm đến việc [thuê](transaction_type)
+      - [mua](transaction_type)
+      - [thuê](transaction_type)
+      - Tôi cần [thuê](transaction_type)
+      - Tôi cần [mua](transaction_type)

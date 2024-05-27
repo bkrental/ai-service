@@ -1,0 +1,7 @@
+version: "3.1"
+nlu:
+  - intent: ask_price_prediction
+    examples: |
+      - Giá [phòng trọ](property_type) ở [quận 1](district) khoảng bao nhiêu?
+      - Bạn có thể dự đoán giá [nhà](property_type) ở [quận 2](district) không?
+      - Giá [chung cư](property_type) [2 phòng ngủ](number_of_bedrooms) ở [quận 3](district) là bao nhiêu?

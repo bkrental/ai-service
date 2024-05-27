@@ -1,0 +1,16 @@
+version: "3.1"
+nlu:
+  - regex: district
+    examples: |
+      - (huyện|H)( )*()+(Cần Giờ|Củ Chi|Hóc Môn|Nhà Bè|Bình Chánh)
+      - (quận|q)( )*(\d)+
+      - (quận|q)?( )*(Bình Thạnh|Gò Vấp|Tân Bình|Tân Phú|Phú Nhuận|Bình Tân)
+      - (thành phố|tp)( )*(Thủ Đức)
+
+  - regex: area
+    examples: |
+      - [0-9]+(\.[0-9]+)?\s?(m2|m²|mét vuông|ha|hectare|hecta|hec-ta)
+      - [0-9]+(\.[0-9]+)?\s?(hectare|hecta|ha|hec-ta)
+
+  - regex: price
+    examples: |

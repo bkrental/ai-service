@@ -1,0 +1,406 @@
+version: "3.1"
+nlu:
+  - intent: search_properties
+    examples: |
+      - Các bài post [bán](transaction_type) [nhà](property_type)
+      - Tôi muốn tìm [phòng trọ](property_type)
+      - Tôi muốn tìm [nhà](property_type) ở khu vực [quận 1](district)
+      - Hãy tìm các bài post cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận 2](district)
+      - Cần tìm [mua](transaction_type) [căn hộ](property_type) tại [quận 10](district)
+      - Gợi ý cho tôi các bài post [bán](transaction_type) [đất nền](property_type) ở [quận Thủ Đức](district)
+      - Tìm [phòng trọ](property_type)
+      - Gợi ý các căn [chung cư](property_type)
+      - Tôi muốn tìm [nhà](property_type)
+      - Tìm [nhà nguyên căn](property_type)
+      - Tôi đang tìm [nhà trọ](property_type) để [thuê](transaction_type)
+      - Tôi muốn tìm [căn hộ](property_type) để [thuê](transaction_type)
+      - Tôi cần một [nhà cho thuê](property_type) để [thuê](transaction_type)
+      - Mình muốn tìm [mua](transaction_type) một mảnh [vườn](property_type)
+      - Hãy tìm cho tôi một căn [chung cư](property_type)
+      - Có [nhà trọ](property_type) nào để [thuê](transaction_type) không?
+      - Tôi đang tìm [phòng trọ](property_type) để [thuê](transaction_type)
+      - Tôi muốn tìm [nhà trọ](property_type) để [thuê](transaction_type)
+      - Tôi cần một [chung cư](property_type) để [thuê](transaction_type)
+      - Bạn có [căn hộ](property_type) nào để [thuê](transaction_type) không?
+      - Tôi muốn thuê [nhà nguyên căn](property_type)
+      - Có [nhà riêng](property_type) nào để [thuê](transaction_type) không?
+      - Tôi đang tìm [nhà mặt phố](property_type) để [thuê](transaction_type)
+      - Tôi muốn tìm [nhà đất](property_type) để [thuê](transaction_type)
+      - Bạn có [đất nền](property_type) nào để [thuê](transaction_type) không?
+      - Tôi cần thuê [đất](property_type)
+      - Có [ký túc xá](property_type) nào để [thuê](transaction_type) không?
+      - Tôi muốn thuê [phòng trọ sinh viên](property_type)
+      - Tôi đang tìm [sleepbox](property_type) để [thuê](transaction_type)
+      - Tôi muốn tìm [phòng trọ](property_type) để [mua](transaction_type)
+      - Tôi cần mua [nhà trọ](property_type)
+      - Có [chung cư](property_type) nào để [mua](transaction_type) không?
+      - Tôi muốn mua [căn hộ](property_type)
+      - Tôi đang tìm [nhà nguyên căn](property_type) để [mua](transaction_type)
+      - Bạn có [nhà riêng](property_type) nào để [mua](transaction_type) không?
+      - Tôi cần mua [nhà mặt phố](property_type)
+      - Tôi muốn tìm [nhà đất](property_type) để [mua](transaction_type)
+      - Có [đất nền](property_type) nào để [mua](transaction_type) không?
+      - Tôi đang tìm [đất](property_type) để [mua](transaction_type)
+      - Bạn có [ký túc xá](property_type) nào để [mua](transaction_type) không?
+      - Tôi muốn mua [phòng trọ sinh viên](property_type)
+      - Tôi cần mua [sleepbox](property_type)
+      - Tôi muốn tìm [phòng trọ](property_type) để [thuê](transaction_type)
+      - Tôi cần thuê [nhà trọ](property_type)
+      - Có [chung cư](property_type) nào để [thuê](transaction_type) không?
+      - Tôi đang tìm [căn hộ](property_type) để [thuê](transaction_type)
+      - Tôi muốn thuê [nhà nguyên căn](property_type)
+      - Bạn có [nhà riêng](property_type) nào để [thuê](transaction_type) không?
+      - Tôi cần thuê [nhà mặt phố](property_type)
+      - Có [nhà đất](property_type) nào để [thuê](transaction_type) không?
+      - Tôi đang tìm [đất nền](property_type) để [thuê](transaction_type)
+      - Tôi muốn thuê [đất](property_type)
+      - Bạn có [ký túc xá](property_type) nào để [thuê](transaction_type) không?
+      - Tôi cần thuê [phòng trọ sinh viên](property_type)
+      - Có [sleepbox](property_type) nào để [thuê](transaction_type) không?
+      - Tôi muốn tìm [phòng trọ](property_type) để [mua](transaction_type)
+      - Tôi cần mua [nhà trọ](property_type)
+      - Có [chung cư](property_type) nào để [mua](transaction_type) không?
+      - Tôi đang tìm [căn hộ](property_type) để [mua](transaction_type)
+      - Tôi muốn mua [nhà nguyên căn](property_type)
+      - Bạn có [nhà riêng](property_type) nào để [mua](transaction_type) không?
+      - Tôi cần mua [nhà mặt phố](property_type)
+      - Có [nhà đất](property_type) nào để [mua](transaction_type) không?
+      - Tôi đang tìm [đất nền](property_type) để [mua](transaction_type)
+      - Tôi muốn mua [đất](property_type)
+      - Bạn có [ký túc xá](property_type) nào để [mua](transaction_type) không?
+      - Tôi cần mua [phòng trọ sinh viên](property_type)
+      - Có [sleepbox](property_type) nào để [mua](transaction_type) không?
+      - Gợi ý cho tôi các bài đăng về [phòng trọ sinh viên](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài post [phòng trọ](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài post [nhà trọ](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài post [chung cư](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài post [căn hộ](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài post [nhà nguyên căn](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài post [nhà riêng](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài post [nhà mặt phố](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài post [nhà đất](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài post [đất nền](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài post [đất](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài post [ký túc xá](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài post [phòng trọ sinh viên](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài post [sleepbox](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài post [phòng trọ](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài post [nhà trọ](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài post [chung cư](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài post [căn hộ](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài post [nhà nguyên căn](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài post [nhà riêng](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài post [nhà mặt phố](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài post [nhà đất](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài post [đất nền](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài post [đất](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài post [ký túc xá](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài post [phòng trọ sinh viên](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài post [sleepbox](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài đăng [phòng trọ](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài đăng [nhà trọ](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài đăng [chung cư](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài đăng [căn hộ](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài đăng [nhà nguyên căn](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài đăng [nhà riêng](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài đăng [nhà mặt phố](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài đăng [nhà đất](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài đăng [đất nền](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài đăng [đất](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài đăng [ký túc xá](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài đăng [phòng trọ sinh viên](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài đăng [sleepbox](property_type) cho [thuê](transaction_type)
+      - Gợi ý cho tôi các bài đăng [phòng trọ](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài đăng [nhà trọ](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài đăng [chung cư](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài đăng [căn hộ](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài đăng [nhà nguyên căn](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài đăng [nhà riêng](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài đăng [nhà mặt phố](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài đăng [nhà đất](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài đăng [đất nền](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài đăng [đất](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài đăng [ký túc xá](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài đăng [phòng trọ sinh viên](property_type) cho [mua](transaction_type)
+      - Gợi ý cho tôi các bài đăng [sleepbox](property_type) cho [mua](transaction_type)
+      - Cho tôi xem các bài đăng cho thuê [phòng trọ](property_type)
+      - Tìm giúp tôi các bài đăng cho thuê [nhà trọ](property_type)
+      - Cho tôi xem các bài đăng cho thuê [chung cư](property_type)
+      - Tìm các bài đăng cho thuê [căn hộ](property_type)
+      - Tôi muốn xem các bài đăng cho thuê [nhà nguyên căn](property_type)
+      - Có bài đăng cho thuê [nhà riêng](property_type) không?
+      - Gợi ý cho tôi các bài đăng cho thuê [nhà mặt phố](property_type)
+      - Tìm bài đăng cho thuê [nhà đất](property_type)
+      - Tôi muốn tìm bài đăng cho thuê [đất nền](property_type)
+      - Có bài đăng cho thuê [đất](property_type) không?
+      - Gợi ý cho tôi các bài đăng cho thuê [ký túc xá](property_type)
+      - Tìm giúp tôi các bài đăng cho thuê [phòng trọ sinh viên](property_type)
+      - Cho tôi xem các bài đăng cho thuê [sleepbox](property_type)
+      - Cho tôi xem các bài đăng bán [phòng trọ](property_type)
+      - Tìm giúp tôi các bài đăng bán [nhà trọ](property_type)
+      - Cho tôi xem các bài đăng bán [chung cư](property_type)
+      - Tìm các bài đăng bán [căn hộ](property_type)
+      - Tôi muốn xem các bài đăng bán [nhà nguyên căn](property_type)
+      - Có bài đăng bán [nhà riêng](property_type) không?
+      - Gợi ý cho tôi các bài đăng bán [nhà mặt phố](property_type)
+      - Tìm bài đăng bán [nhà đất](property_type)
+      - Tôi muốn tìm bài đăng bán [đất nền](property_type)
+      - Có bài đăng bán [đất](property_type) không?
+      - Gợi ý cho tôi các bài đăng bán [ký túc xá](property_type)
+      - Tìm giúp tôi các bài đăng bán [phòng trọ sinh viên](property_type)
+      - Cho tôi xem các bài đăng bán [sleepbox](property_type)
+      - Tôi đang tìm bài đăng cho thuê [phòng trọ](property_type)
+      - Tôi muốn tìm bài đăng cho thuê [nhà trọ](property_type)
+      - Có bài đăng cho thuê [chung cư](property_type) không?
+      - Gợi ý cho tôi các bài đăng cho thuê [căn hộ](property_type)
+      - Tìm giúp tôi bài đăng cho thuê [nhà nguyên căn](property_type)
+      - Cho tôi xem bài đăng cho thuê [nhà riêng](property_type)
+      - Tôi cần tìm bài đăng cho thuê [nhà mặt phố](property_type)
+      - Có bài đăng cho thuê [nhà đất](property_type) không?
+      - Gợi ý cho tôi bài đăng cho thuê [đất nền](property_type)
+      - Tìm giúp tôi bài đăng cho thuê [đất](property_type)
+      - Tôi muốn xem bài đăng cho thuê [ký túc xá](property_type)
+      - Có bài đăng cho thuê [phòng trọ sinh viên](property_type) không?
+      - Gợi ý cho tôi bài đăng cho thuê [sleepbox](property_type)
+      - Tôi đang tìm bài đăng bán [phòng trọ](property_type)
+      - Tôi muốn tìm bài đăng bán [nhà trọ](property_type)
+      - Có bài đăng bán [chung cư](property_type) không?
+      - Gợi ý cho tôi các bài đăng bán [căn hộ](property_type)
+      - Tìm giúp tôi bài đăng bán [nhà nguyên căn](property_type)
+      - Cho tôi xem bài đăng bán [nhà riêng](property_type)
+      - Tôi cần tìm bài đăng bán [nhà mặt phố](property_type)
+      - Có bài đăng bán [nhà đất](property_type) không?
+      - Gợi ý cho tôi bài đăng bán [đất nền](property_type)
+      - Tìm giúp tôi bài đăng bán [đất](property_type)
+      - Tôi muốn xem bài đăng bán [ký túc xá](property_type)
+      - Có bài đăng bán [phòng trọ sinh viên](property_type) không?
+      - Gợi ý cho tôi bài đăng bán [sleepbox](property_type)
+      - Ở [Tân Phú](district), có [phòng trọ](property_type) nào không?
+      - Tìm [phòng trọ](property_type) ở [quận 1](district)
+      - Tôi muốn thuê [nhà](property_type) tại [quận 2](district)
+      - Tìm [căn hộ](property_type) ở [quận 3](district)
+      - Tôi cần thuê [nhà nguyên căn](property_type) tại [quận 4](district)
+      - Có [nhà mặt phố](property_type) nào ở [quận 5](district) không?
+      - Tìm [nhà trọ](property_type) ở [quận 6](district)
+      - Tôi muốn tìm [chung cư](property_type) tại [quận 7](district)
+      - Tìm [nhà đất](property_type) ở [quận 8](district)
+      - Có [phòng trọ sinh viên](property_type) nào ở [quận 9](district) không?
+      - Tìm [nhà nguyên căn](property_type) tại [quận 10](district)
+      - Tôi cần tìm [căn hộ](property_type) ở [quận 11](district)
+      - Tìm [nhà riêng](property_type) tại [quận 12](district)
+      - Tôi muốn thuê [nhà đất](property_type) ở [quận Bình Thạnh](district)
+      - Tìm [ký túc xá](property_type) tại [quận Tân Bình](district)
+      - Tôi muốn tìm [sleepbox](property_type) ở [quận Tân Phú](district)
+      - Tôi cần tìm [chung cư mini](property_type) tại [quận Phú Nhuận](district)
+      - Tìm [nhà trọ sinh viên](property_type) ở [quận Gò Vấp](district)
+      - Tôi muốn thuê [nhà nguyên căn](property_type) tại [quận Bình Tân](district)
+      - Có [phòng trọ](property_type) nào ở [quận Thủ Đức](district) không?
+      - Tôi muốn tìm [căn hộ dịch vụ](property_type) tại [quận Thủ Đức](district)
+      - Tìm [chung cư cao cấp](property_type) ở [quận 1](district)
+      - Tôi cần thuê [nhà phố](property_type) tại [quận 3](district)
+      - Tìm [nhà liền kề](property_type) tại [quận 5](district)
+      - Tôi muốn thuê [nhà đất](property_type) ở [quận 7](district)
+      - Tìm [căn hộ mini](property_type) tại [quận 9](district)
+      - Có [chung cư](property_type) nào ở [quận 11](district) không?
+      - Tìm [nhà mặt phố](property_type) tại [quận 12](district)
+      - Tôi muốn thuê [nhà trọ sinh viên](property_type) tại [quận Bình Thạnh](district)
+      - Tìm [phòng trọ sinh viên](property_type) ở [quận Tân Bình](district)
+      - Tôi muốn tìm [chung cư mini](property_type) tại [quận Tân Phú](district)
+      - Tìm các bài post cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận 1](district)
+      - Gợi ý cho tôi các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) tại [quận 2](district)
+      - Tìm các bài post cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận 3](district)
+      - Cho tôi xem các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) tại [quận 4](district)
+      - Có các bài post nào cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận 5](district) không?
+      - Tôi muốn tìm các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận 6](district)
+      - Tìm các bài post cho [thuê](transaction_type) [phòng trọ](property_type) tại [quận 7](district)
+      - Cho tôi xem các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận 8](district)
+      - Có các bài post nào cho [thuê](transaction_type) [phòng trọ](property_type) tại [quận 9](district) không?
+      - Tôi muốn tìm các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận 10](district)
+      - Tìm các bài post cho [thuê](transaction_type) [phòng trọ](property_type) tại [quận 11](district)
+      - Cho tôi xem các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận 12](district)
+      - Có các bài post nào cho [thuê](transaction_type) [phòng trọ](property_type) tại [quận Bình Thạnh](district) không?
+      - Tôi muốn tìm các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận Tân Bình](district)
+      - Tìm các bài post cho [thuê](transaction_type) [phòng trọ](property_type) tại [quận Tân Phú](district)
+      - Cho tôi xem các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận Phú Nhuận](district)
+      - Có các bài post nào cho [thuê](transaction_type) [phòng trọ](property_type) tại [quận Gò Vấp](district) không?
+      - Tôi muốn tìm các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận Bình Tân](district)
+      - Tìm các bài post cho [thuê](transaction_type) [phòng trọ](property_type) tại [quận Thủ Đức](district)
+      - Cho tôi xem các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận Thủ Đức](district)
+      - Tìm [phòng trọ](property_type) ở [quận 1](district)
+      - Tôi muốn [thuê](transaction_type) [nhà](property_type) tại [quận 2](district)
+      - Tìm [căn hộ](property_type) ở [quận 3](district)
+      - Tôi cần [thuê](transaction_type) [nhà nguyên căn](property_type) tại [quận 4](district)
+      - Có [nhà mặt phố](property_type) nào ở [quận 5](district) không?
+      - Tìm [nhà trọ](property_type) ở [quận 6](district)
+      - Tôi muốn tìm [chung cư](property_type) tại [quận 7](district)
+      - Tìm [nhà đất](property_type) ở [quận 8](district)
+      - Có [phòng trọ sinh viên](property_type) nào ở [quận 9](district) không?
+      - Tìm [nhà nguyên căn](property_type) tại [quận 10](district)
+      - Tôi cần tìm [căn hộ](property_type) ở [quận 11](district)
+      - Tìm [nhà riêng](property_type) tại [quận 12](district)
+      - Tôi muốn [thuê](transaction_type) [nhà đất](property_type) ở [quận Bình Thạnh](district)
+      - Tìm [ký túc xá](property_type) tại [quận Tân Bình](district)
+      - Tôi muốn tìm [sleepbox](property_type) ở [quận Tân Phú](district)
+      - Tôi cần tìm [chung cư mini](property_type) tại [quận Phú Nhuận](district)
+      - Tìm [nhà trọ sinh viên](property_type) ở [quận Gò Vấp](district)
+      - Tôi muốn [thuê](transaction_type) [nhà nguyên căn](property_type) tại [quận Bình Tân](district)
+      - Có [phòng trọ](property_type) nào ở [quận Thủ Đức](district) không?
+      - Tôi muốn tìm [căn hộ dịch vụ](property_type) tại [quận Thủ Đức](district)
+      - Tìm [chung cư cao cấp](property_type) ở [quận 1](district)
+      - Tôi cần [thuê](transaction_type) [nhà phố](property_type) tại [quận 3](district)
+      - Tìm [nhà liền kề](property_type) tại [quận 5](district)
+      - Tôi muốn [thuê](transaction_type) [nhà đất](property_type) ở [quận 7](district)
+      - Tìm [căn hộ mini](property_type) tại [quận 9](district)
+      - Có [chung cư](property_type) nào ở [quận 11](district) không?
+      - Tìm [nhà mặt phố](property_type) tại [quận 12](district)
+      - Tôi muốn [thuê](transaction_type) [nhà trọ sinh viên](property_type) tại [quận Bình Thạnh](district)
+      - Tìm [phòng trọ sinh viên](property_type) ở [quận Tân Bình](district)
+      - Tôi muốn tìm [chung cư mini](property_type) tại [quận Tân Phú](district)
+      - Tìm các bài post cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận 1](district)
+      - Gợi ý cho tôi các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) tại [quận 2](district)
+      - Tìm các bài post cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận 3](district)
+      - Cho tôi xem các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) tại [quận 4](district)
+      - Có các bài post nào cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận 5](district) không?
+      - Tôi muốn tìm các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận 6](district)
+      - Tìm các bài post cho [thuê](transaction_type) [phòng trọ](property_type) tại [quận 7](district)
+      - Cho tôi xem các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận 8](district)
+      - Có các bài post nào cho [thuê](transaction_type) [phòng trọ](property_type) tại [quận 9](district) không?
+      - Tôi muốn tìm các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận 10](district)
+      - Tìm các bài post cho [thuê](transaction_type) [phòng trọ](property_type) tại [quận 11](district)
+      - Cho tôi xem các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận 12](district)
+      - Có các bài post nào cho [thuê](transaction_type) [phòng trọ](property_type) tại [quận Bình Thạnh](district) không?
+      - Tôi muốn tìm các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận Tân Bình](district)
+      - Tìm các bài post cho [thuê](transaction_type) [phòng trọ](property_type) tại [quận Tân Phú](district)
+      - Cho tôi xem các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận Phú Nhuận](district)
+      - Có các bài post nào cho [thuê](transaction_type) [phòng trọ](property_type) tại [quận Gò Vấp](district) không?
+      - Tôi muốn tìm các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận Bình Tân](district)
+      - Tìm các bài post cho [thuê](transaction_type) [phòng trọ](property_type) tại [quận Thủ Đức](district)
+      - Cho tôi xem các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) ở [quận Thủ Đức](district)
+      - Tìm [phòng trọ](property_type) ở [quận 1](district)
+      - Tôi muốn [thuê](transaction_type) [nhà](property_type) tại [quận 2](district)
+      - Tìm [căn hộ](property_type) ở [quận 3](district)
+      - Tôi cần [thuê](transaction_type) [nhà nguyên căn](property_type) tại [quận 4](district)
+      - Có [nhà mặt phố](property_type) nào ở [quận 5](district) không?
+      - Tìm [nhà trọ](property_type) ở [quận 6](district)
+      - Tôi muốn tìm [chung cư](property_type) tại [quận 7](district)
+      - Tìm [nhà đất](property_type) ở [quận 8](district)
+      - Có [phòng trọ sinh viên](property_type) nào ở [quận 9](district) không?
+      - Tìm [nhà nguyên căn](property_type) tại [quận 10](district)
+      - Tôi cần tìm [căn hộ](property_type) ở [quận 11](district)
+      - Tìm [nhà riêng](property_type) tại [quận 12](district)
+      - Tôi muốn [thuê](transaction_type) [nhà đất](property_type) ở [quận Bình Thạnh](district)
+      - Tìm [ký túc xá](property_type) tại [quận Tân Bình](district)
+      - Tôi muốn tìm [sleepbox](property_type) ở [quận Tân Phú](district)
+      - Tôi cần tìm [chung cư mini](property_type) tại [quận Phú Nhuận](district)
+      - Tìm [nhà trọ sinh viên](property_type) ở [quận Gò Vấp](district)
+      - Tôi muốn [thuê](transaction_type) [nhà nguyên căn](property_type) tại [quận Bình Tân](district)
+      - Có [phòng trọ](property_type) nào ở [quận Thủ Đức](district) không?
+      - Tôi muốn tìm [căn hộ dịch vụ](property_type) tại [quận Thủ Đức](district)
+      - Tìm [chung cư cao cấp](property_type) ở [quận 1](district)
+      - Tôi cần [thuê](transaction_type) [nhà phố](property_type) tại [quận 3](district)
+      - Ở [Tân Phú](district), có [phòng trọ](property_type) nào không?
+      - Bạn có biết ở [Quận 1](district) có [căn hộ](property_type) nào không?
+      - Mình đang tìm [nhà riêng](property_type) ở [Quận 2](district), bạn có biết không?
+      - Có [biệt thự](property_type) nào ở [Bình Thạnh](district) không?
+      - Tôi muốn tìm [căn hộ dịch vụ](property_type) ở [Phú Nhuận](district), có không?
+      - Ở [Gò Vấp](district) có [phòng trọ](property_type) cho thuê không?
+      - Bạn có thể giúp tôi tìm [nhà phố](property_type) ở [Thủ Đức](district) không?
+      - Mình cần tìm [nhà riêng](property_type) ở [Quận 3](district), có không?
+      - Có [căn hộ](property_type) nào cho thuê ở [Quận 5](district) không?
+      - Bạn có biết ở [Quận 7](district) có [biệt thự](property_type) nào cho thuê không?
+      - Tôi muốn hỏi về [căn hộ dịch vụ](property_type) ở [Quận 8](district).
+      - Có [phòng trọ](property_type) nào ở [Tân Bình](district) không?
+      - Tôi đang tìm [nhà phố](property_type) ở [Bình Tân](district), bạn có thông tin không?
+      - Có ai biết ở [Quận 9](district) có [nhà riêng](property_type) nào không?
+      - Ở [Quận 10](district) có [căn hộ](property_type) nào cho thuê không?
+      - Bạn có biết ở [Quận 11](district) có [biệt thự](property_type) nào không?
+      - Tôi muốn thuê [căn hộ dịch vụ](property_type) ở [Nhà Bè](district), có không?
+      - Có [phòng trọ](property_type) nào cho thuê ở [Hóc Môn](district) không?
+      - Bạn có thể tìm giúp mình [nhà phố](property_type) ở [Bình Chánh](district) không?
+      - Ở [Quận 4](district) có [căn hộ](property_type) nào không?
+      - Bạn có biết ở [Quận 6](district) có [nhà riêng](property_type) nào không?
+      - Mình đang tìm [biệt thự](property_type) ở [Quận 12](district), bạn có biết không?
+      - Có [căn hộ dịch vụ](property_type) nào ở [Củ Chi](district) không?
+      - Tôi muốn tìm [phòng trọ](property_type) ở [Cần Giờ](district), có không?
+      - Tìm [phòng trọ](property_type) giá từ [1 triệu]{"entity": "price", "role": "bottom"} đến [3 triệu]{"entity": "price", "role": "top"}
+      - Tôi muốn [thuê](transaction_type) [nhà](property_type) giá từ [2 triệu]{"entity": "price", "role": "bottom"} đến [5 triệu]{"entity": "price", "role": "top"}
+      - Tìm [căn hộ](property_type) có giá từ [4 triệu]{"entity": "price", "role": "bottom"} đến [7 triệu]{"entity": "price", "role": "top"}
+      - Tôi cần [thuê](transaction_type) [nhà nguyên căn](property_type) giá từ [3 triệu]{"entity": "price", "role": "bottom"} đến [6 triệu]{"entity": "price", "role": "top"}
+      - Có [nhà mặt phố](property_type) nào giá từ [5 triệu]{"entity": "price", "role": "bottom"} đến [8 triệu]{"entity": "price", "role": "top"} không?
+      - Tìm [nhà trọ](property_type) có giá từ [1 triệu]{"entity": "price", "role": "bottom"} đến [3 triệu]{"entity": "price", "role": "top"}
+      - Tôi muốn tìm [chung cư](property_type) giá từ [2 triệu]{"entity": "price", "role": "bottom"} đến [5 triệu]{"entity": "price", "role": "top"}
+      - Tìm [nhà đất](property_type) giá từ [3 triệu]{"entity": "price", "role": "bottom"} đến [6 triệu]{"entity": "price", "role": "top"}
+      - Có [phòng trọ sinh viên](property_type) giá từ [1 triệu]{"entity": "price", "role": "bottom"} đến [3 triệu]{"entity": "price", "role": "top"} không?
+      - Tìm [nhà nguyên căn](property_type) giá từ [2 triệu]{"entity": "price", "role": "bottom"} đến [5 triệu]{"entity": "price", "role": "top"}
+      - Tôi cần tìm [căn hộ](property_type) giá từ [3 triệu]{"entity": "price", "role": "bottom"} đến [6 triệu]{"entity": "price", "role": "top"}
+      - Tìm [nhà riêng](property_type) giá từ [4 triệu]{"entity": "price", "role": "bottom"} đến [7 triệu]{"entity": "price", "role": "top"}
+      - Tôi muốn [thuê](transaction_type) [nhà đất](property_type) giá từ [5 triệu]{"entity": "price", "role": "bottom"} đến [8 triệu]{"entity": "price", "role": "top"}
+      - Tìm [ký túc xá](property_type) giá từ [1 triệu]{"entity": "price", "role": "bottom"} đến [3 triệu]{"entity": "price", "role": "top"}
+      - Tôi muốn tìm [sleepbox](property_type) giá từ [2 triệu]{"entity": "price", "role": "bottom"} đến [4 triệu]{"entity": "price", "role": "top"}
+      - Tôi cần tìm [chung cư mini](property_type) giá từ [3 triệu]{"entity": "price", "role": "bottom"} đến [5 triệu]{"entity": "price", "role": "top"}
+      - Tìm [nhà trọ sinh viên](property_type) giá từ [1 triệu]{"entity": "price", "role": "bottom"} đến [2 triệu]{"entity": "price", "role": "top"}
+      - Tôi muốn [thuê](transaction_type) [nhà nguyên căn](property_type) giá từ [2 triệu]{"entity": "price", "role": "bottom"} đến [4 triệu]{"entity": "price", "role": "top"}
+      - Có [phòng trọ](property_type) giá từ [1 triệu]{"entity": "price", "role": "bottom"} đến [3 triệu]{"entity": "price", "role": "top"} không?
+      - Tôi muốn tìm [căn hộ dịch vụ](property_type) giá từ [3 triệu]{"entity": "price", "role": "bottom"} đến [6 triệu]{"entity": "price", "role": "top"}
+      - Tìm [chung cư cao cấp](property_type) giá từ [4 triệu]{"entity": "price", "role": "bottom"} đến [7 triệu]{"entity": "price", "role": "top"}
+      - Tôi cần [thuê](transaction_type) [nhà phố](property_type) giá từ [2 triệu]{"entity": "price", "role": "bottom"} đến [5 triệu]{"entity": "price", "role": "top"}
+      - Tìm [nhà liền kề](property_type) có giá từ [5 triệu]{"entity": "price", "role": "bottom"} đến [8 triệu]{"entity": "price", "role": "top"}
+      - Tôi muốn [thuê](transaction_type) [nhà đất](property_type) giá từ [1 triệu]{"entity": "price", "role": "bottom"} đến [3 triệu]{"entity": "price", "role": "top"}
+      - Tìm [căn hộ mini](property_type) giá từ [2 triệu]{"entity": "price", "role": "bottom"} đến [4 triệu]{"entity": "price", "role": "top"}
+      - Có [chung cư](property_type) giá từ [3 triệu]{"entity": "price", "role": "bottom"} đến [5 triệu]{"entity": "price", "role": "top"} không?
+      - Tìm [nhà mặt phố](property_type) có giá từ [4 triệu]{"entity": "price", "role": "bottom"} đến [7 triệu]{"entity": "price", "role": "top"}
+      - Tôi muốn [thuê](transaction_type) [nhà trọ sinh viên](property_type) giá từ [1 triệu]{"entity": "price", "role": "bottom"} đến [3 triệu]{"entity": "price", "role": "top"}
+      - Tìm [phòng trọ sinh viên](property_type) giá từ [2 triệu]{"entity": "price", "role": "bottom"} đến [5 triệu]{"entity": "price", "role": "top"}
+      - Tôi muốn tìm [chung cư mini](property_type) giá từ [1 triệu]{"entity": "price", "role": "bottom"} đến [4 triệu]{"entity": "price", "role": "top"}
+      - Tìm [phòng trọ sinh viên](property_type) giá từ [2 triệu]{"entity": "price", "role": "bottom"} đến [5 triệu]{"entity": "price", "role": "top"}
+      - Tôi muốn tìm [chung cư mini](property_type) giá từ [1 triệu]{"entity": "price", "role": "bottom"} đến [4 triệu]{"entity": "price", "role": "top"}
+      - Tìm các bài post cho [thuê](transaction_type) [phòng trọ](property_type), giá từ [2 triệu]{"entity": "price", "role": "bottom"} đến [5 triệu]{"entity": "price", "role": "top"}
+      - Gợi ý cho tôi các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type), giá từ [3 triệu]{"entity": "price", "role": "bottom"} đến [6 triệu]{"entity": "price", "role": "top"}
+      - Tìm các bài post cho [thuê](transaction_type) [phòng trọ](property_type) giá khoảng [10 triệu]{"entity": "price", "role": "average"}
+      - Cho tôi xem các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) giá khoảng [5 triệu]{"entity": "price", "role": "average"}
+      - Có các bài post nào cho [thuê](transaction_type) [phòng trọ](property_type) giá từ [1 triệu]{"entity": "price", "role": "bottom"} đến [4 triệu]{"entity": "price", "role": "top"} không?
+      - Tôi muốn tìm các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) giá từ [2 triệu]{"entity": "price", "role": "bottom"} đến [5 triệu]{"entity": "price", "role": "top"}
+      - Tìm các bài post cho [thuê](transaction_type) [phòng trọ](property_type) giá khoảng [8 triệu]{"entity": "price", "role": "average"}
+      - Cho tôi xem các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) giá khoảng [6 triệu]{"entity": "
+      - Tìm [nhà mặt phố](property_type) có giá từ [4 triệu]{"entity": "price", "role": "bottom"} đến [7 triệu]{"entity": "price", "role": "top"}
+      - Tôi muốn [thuê](transaction_type) [nhà trọ sinh viên](property_type) giá từ [1 triệu]{"entity": "price", "role": "bottom"} đến [3 triệu]{"entity": "price", "role": "top"}
+      - Tìm [phòng trọ sinh viên](property_type) giá từ [2 triệu]{"entity": "price", "role": "bottom"} đến [5 triệu]{"entity": "price", "role": "top"}
+      - Tôi muốn tìm [chung cư mini](property_type) giá từ [1 triệu]{"entity": "price", "role": "bottom"} đến [4 triệu]{"entity": "price", "role": "top"}
+      - Tìm các bài post cho [thuê](transaction_type) [phòng trọ](property_type), giá từ [2 triệu]{"entity": "price", "role": "bottom"} đến [5 triệu]{"entity": "price", "role": "top"}
+      - Gợi ý cho tôi các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type), giá từ [3 triệu]{"entity": "price", "role": "bottom"} đến [6 triệu]{"entity": "price", "role": "top"}
+      - Tìm các bài post cho [thuê](transaction_type) [phòng trọ](property_type) giá khoảng [10 triệu]{"entity": "price", "role": "average"}
+      - Cho tôi xem các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) giá khoảng [5 triệu]{"entity": "price", "role": "average"}
+      - Có các bài post nào cho [thuê](transaction_type) [phòng trọ](property_type) giá từ [1 triệu]{"entity": "price", "role": "bottom"} đến [4 triệu]{"entity": "price", "role": "top"} không?
+      - Tôi muốn tìm các bài đăng cho [thuê](transaction_type) [phòng trọ](property_type) giá từ [2 triệu]{"entity": "price", "role": "bottom"} đến [5 triệu]{"entity": "price", "role": "top"}
+      - Tìm các bài post cho [thuê](transaction_type) [phòng trọ](property_type) giá khoảng [8 triệu]{"entity": "price", "role": "average"}
+      - Tìm [nhà phố](property_type) giá từ [5 triệu]{"entity": "price", "role": "bottom"} đến [10 triệu]{"entity": "price", "role": "top"} ở [Quận 1](district)
+      - Tìm [biệt thự](property_type) giá từ [20 triệu]{"entity": "price", "role": "bottom"} đến [30 triệu]{"entity": "price", "role": "top"} ở [Bình Thạnh](district)
+      - Tôi muốn tìm [phòng trọ](property_type) có giá từ [2 triệu]{"entity": "price", "role": "bottom"} đến [5 triệu]{"entity": "price", "role": "top"} ở [Gò Vấp](district)
+      - Có [căn hộ](property_type) nào giá từ [3 triệu]{"entity": "price", "role": "bottom"} đến [6 triệu]{"entity": "price", "role": "top"} ở [Quận 3](district) không?
+      - Bạn có thể giúp tôi tìm [nhà riêng](property_type) giá từ [7 triệu]{"entity": "price", "role": "bottom"} đến [15 triệu]{"entity": "price", "role": "top"} ở [Phú Nhuận](district) được không?
+      - Tôi đang tìm [chung cư mini](property_type) với giá từ [3 triệu]{"entity": "price", "role": "bottom"} đến [5 triệu]{"entity": "price", "role": "top"} ở [Quận 2](district)
+      - Cần tìm [nhà liền kề](property_type) trong khoảng giá từ [8 triệu]{"entity": "price", "role": "bottom"} đến [12 triệu]{"entity": "price", "role": "top"} ở [Thủ Đức](district)
+      - Có ai biết [căn hộ dịch vụ](property_type) giá từ [6 triệu]{"entity": "price", "role": "bottom"} đến [9 triệu]{"entity": "price", "role": "top"} ở [Quận 5](district) không?
+      - Tôi cần [villa](property_type) giá tầm [25 triệu]{"entity": "price", "role": "bottom"} đến [40 triệu]{"entity": "price", "role": "top"} ở [Quận 7](district)
+      - Tìm giúp mình [studio](property_type) giá khoảng [3 triệu]{"entity": "price", "role": "bottom"} đến [7 triệu]{"entity": "price", "role": "top"} ở [Bình Tân](district)
+      - Có thể tìm [căn hộ cao cấp](property_type) giá dưới [25 triệu]{"entity": "price", "role": "top"} ở [Quận 9](district) cho tôi không?
+      - Tôi muốn biết về [nhà trọ](property_type) có giá khoảng [1 triệu]{"entity": "price", "role": "bottom"} đến [3 triệu]{"entity": "price", "role": "top"} ở [Tân Bình](district)
+      - Bạn có thông tin về [chung cư giá rẻ](property_type) giá dưới [4 triệu]{"entity": "price", "role": "top"} ở [Nhà Bè](district) không?
+      - Tìm [nhà nguyên căn](property_type) giá từ [10 triệu]{"entity": "price", "role": "bottom"} đến [20 triệu]{"entity": "price", "role": "top"} ở [Hóc Môn](district)
+      - Tôi muốn thuê [căn hộ mini](property_type) giá tầm [4 triệu]{"entity": "price", "role": "bottom"} đến [8 triệu]{"entity": "price", "role": "top"} ở [Củ Chi](district)
+      - Bạn có biết [căn hộ studio](property_type) giá từ [5 triệu]{"entity": "price", "role": "bottom"} đến [9 triệu]{"entity": "price", "role": "top"} ở [Cần Giờ](district) ở đâu không?
+      - Tôi đang tìm [căn hộ duplex](property_type) với giá từ [10 triệu]{"entity": "price", "role": "bottom"} đến [15 triệu]{"entity": "price", "role": "top"} ở [Quận 10](district)
+      - Có [nhà trọ cao cấp](property_type) nào giá dưới [6 triệu]{"entity": "price", "role": "top"} ở [Quận 11](district) không?
+      - Bạn có thể giúp tôi tìm [nhà ở xã hội](property_type) giá tầm [2 triệu]{"entity": "price", "role": "bottom"} đến [4 triệu]{"entity": "price", "role": "top"} ở [Quận 4](district) được không?
+      - Tôi muốn biết về [căn hộ penthouse](property_type) có giá từ [20 triệu]{"entity": "price", "role": "bottom"} đến [35 triệu]{"entity": "price", "role": "top"} ở [Quận 6](district)
+      - Cần tìm [nhà cho thuê](property_type) trong khoảng giá từ [5 triệu]{"entity": "price", "role": "bottom"} đến [10 triệu]{"entity": "price", "role": "top"} ở [Quận 12](district)
+      - Tìm [chung cư](property_type) giá khoảng [8 triệu]{"entity": "price", "role": "average"} ở [Quận 8](district)
+      - Có [nhà phố](property_type) nào giá tầm [12 triệu]{"entity": "price", "role": "average"} ở [Quận 2](district) không?
+      - Bạn có thể giúp tôi tìm [biệt thự](property_type) giá khoảng [50 triệu]{"entity": "price", "role": "average"} ở [Quận 5](district) được không?
+      - Tôi muốn biết về [căn hộ dịch vụ](property_type) có giá tầm [18 triệu]{"entity": "price", "role": "average"} ở [Quận 3](district)
+      - Tìm [nhà riêng](property_type) giá khoảng [10 triệu]{"entity": "price", "role": "average"} ở [Bình Thạnh](district)
+      - Tôi cần [phòng trọ](property_type) giá khoảng [3 triệu]{"entity": "price", "role": "average"} ở [Phú Nhuận](district)
+      - Có thể tìm [studio](property_type) giá tầm [6 triệu]{"entity": "price", "role": "average"} ở [Tân Bình](district) cho tôi không?
+      - Bạn có biết [chung cư mini](property_type) giá khoảng [5 triệu]{"entity": "price", "role": "average"} ở [Quận 4](district) ở đâu không?
+      - Tôi đang tìm [căn hộ penthouse](property_type) với giá khoảng [30 triệu]{"entity": "price", "role": "average"} ở [Quận 7](district)
+      - Có [nhà liền kề](property_type) nào giá tầm [20 triệu]{"entity": "price", "role": "average"} ở [Quận 9](district) không?

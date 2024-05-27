@@ -1,0 +1,84 @@
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - hello there
+      - good morning
+      - good evening
+      - moin
+      - hey there
+      - let's go
+      - hey dude
+      - goodmorning
+      - goodevening
+      - good afternoon
+
+  - intent: goodbye
+    examples: |
+      - cu
+      - good by
+      - cee you later
+      - good night
+      - bye
+      - goodbye
+      - have a nice day
+      - see you around
+      - bye bye
+      - see you later
+
+  - intent: affirm
+    examples: |
+      - yes
+      - y
+      - indeed
+      - of course
+      - that sounds good
+      - correct
+
+  - intent: deny
+    examples: |
+      - no
+      - n
+      - never
+      - I don't think so
+      - don't like that
+      - no way
+      - not really
+
+  - intent: chitchat/ask_name
+    examples: |
+      - What is your name?
+      - May I know your name?
+      - What do people call you?
+      - Do you have a name for yourself?
+
+  - intent: chitchat/ask_weather
+    examples: |
+      - What's the weather like today?
+      - Does it look sunny outside today?
+      - Oh, do you mind checking the weather for me please?
+      - I like sunny days in Berlin.
+
+  - intent: out_of_scope
+    examples: |
+      - Hôm nay là thứ mấy
+      - Tổng thống Mỹ là ai
+      - 1 + 1 bằng mấy
+
+  - intent: explain
+    examples: |
+      - Bạn có thể giải thích thêm không
+      - Tôi chưa hiểu câu hỏi của bạn
+      - Bạn có thể nói rõ hơn không
+      - Tôi không hiểu ý bạn
+      - Các giá trị có thể là gì
+
+  - intent: ask_price_prediction
+    examples: |
+      - Giá [phòng trọ](property_type) ở [quận 1](district) khoảng bao nhiêu?
+      - Bạn có thể dự đoán giá [nhà](property_type) ở [quận 2](district) không?
+      - Giá [chung cư](property_type) [2 phòng ngủ](number_of_bedrooms) ở [quận 3](district) là bao nhiêu?

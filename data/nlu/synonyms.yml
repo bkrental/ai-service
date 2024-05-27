@@ -1,0 +1,69 @@
+version: "3.1"
+nlu:
+  - synonym: room
+    examples: |
+      - phòng trọ
+      - phòng trọ cho thuê
+      - trọ
+      - phòng trọ sinh viên
+      - studio
+
+  - synonym: house
+    examples: |
+      - nhà đất
+      - nhà mặt tiền
+      - nhà
+      - nhà riêng
+      - nhà nguyên căn
+      - nhà mặt phố
+
+  - synonym: appartment
+    examples: |
+      - căn hộ
+      - chung cư
+      - căn hộ dịch vụ
+      - căn hộ mini
+      - căn hộ studio
+      - căn hộ duplex
+      - chung cư mini
+
+  - synonym: dormitory
+    examples: |
+      - ktx
+      - ký túc xá
+      - sleepbox
+
+  - synonym: office
+    examples: |
+      - văn phòng
+
+  - synonym: villa
+    examples: |
+      - biệt thự
+      - lâu đài
+
+  - synonym: land
+    examples: |
+      - đất nền
+      - đất
+      - đất trống
+      - đất vườn
+
+  - synonym: warehouse
+    examples: |
+      - nhà kho
+      - nhà xưởng
+      - kho bãi
+      - xưởng
+      - kho hàng
+
+  - synonym: rent
+    examples: |
+      - thuê
+      - cho thuê
+      - mướn
+
+  - synonym: buy
+    examples: |
+      - mua
+      - bán

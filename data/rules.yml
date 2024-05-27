@@ -1,0 +1,83 @@
+version: "3.1"
+
+rules:
+  - rule: Activate the search properties form
+    steps:
+      - intent: search_properties
+      - action: search_properties_form
+      - active_loop: search_properties_form
+
+  - rule: Submit search properties form
+    condition:
+      - active_loop: search_properties_form
+    steps:
+      - action: search_properties_form
+      - active_loop: null
+      - action: action_submit_search_properties_form
+
+  - rule: Update the price slot when form is submitted
+    condition:
+      - slot_was_set:
+          - property_type: true
+          - transaction_type: true
+          - location: true
+          - price: true
+    steps:
+      - intent: provide_price
+      - action: action_check_for_price_update
+
+  - rule: Update the location slot when form is submitted
+    condition:
+      - slot_was_set:
+          - property_type: true
+          - transaction_type: true
+          - location: true
+          - price: true
+    steps:
+      - intent: provide_location
+      - action: action_check_for_location_update
+
+  - rule: Update the property_type slot when form is submitted
+    condition:
+      - slot_was_set:
+          - location: true
+          - transaction_type: true
+          - price: true
+    steps:
+      - intent: provide_property_type
+      - action: action_submit_search_properties_form
+
+  - rule: Update the transaction_type slot when form is submitted
+    condition:
+      - slot_was_set:
+          - location: true
+          - property_type: true
+          - price: true
+    steps:
+      - intent: provide_transaction_type
+      - action: action_submit_search_properties_form
+
+  - rule: Respond to chitchat
+    steps:
+      - intent: chitchat
+      - action: utter_chitchat
+
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+      - intent: goodbye
+      - action: action_bye
+
+  - rule: Say hi anytime the user greets
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Handle out-of-scope intent
+    steps:
+      - intent: out_of_scope
+      - action: utter_out_of_scope
+
+  - rule: Ask the user to rephrase whenever they send a message with low NLU confidence
+    steps:
+      - intent: nlu_fallback
+      - action: utter_please_rephrase

@@ -1,0 +1,150 @@
+version: "3.1"
+nlu:
+  - intent: provide_price
+    examples: |
+      - giá từ [1 triệu]{"entity": "price", "role": "bottom"} đến [3 triệu]{"entity": "price", "role": "top"}
+      - Giá: [1tr]{"entity": "price", "role": "bottom"} - [3tr]{"entity": "price", "role": "top"}
+      - Từ [2 triệu]{"entity": "price", "role": "bottom"} đến [5 triệu]{"entity": "price", "role": "top"}
+      - [2]{"entity": "price", "role": "bottom"} - [5 triệu]{"entity": "price", "role": "top"}
+      - giá từ [1 triệu]{"entity": "price", "role": "bottom"}
+      - Giá: [1tr]{"entity": "price", "role": "bottom"}
+      - Từ [2 triệu]{"entity": "price", "role": "bottom"}
+      - Chỉ hơn [2]{"entity": "price", "role": "bottom"}
+      - Trên [3 triệu]{"entity": "price", "role": "bottom"}
+      - >= [3 triệu]{"entity": "price", "role": "bottom"}
+      - Hơn [3 triệu]{"entity": "price", "role": "bottom"}
+      - Giá lớn hơn [3 triệu]{"entity": "price", "role": "bottom"}
+      - Không dưới [3 triệu]{"entity": "price", "role": "bottom"}
+      - giá dưới [3 triệu]{"entity": "price", "role": "top"}
+      - Giá: dưới [3tr]{"entity": "price", "role": "top"}
+      - Dưới [5 triệu]{"entity": "price", "role": "top"}
+      - Chỉ [2 triệu]{"entity": "price", "role": "top"}
+      - Dưới [2.5 triệu]{"entity": "price", "role": "top"}
+      - Dưới [3 triệu]{"entity": "price", "role": "top"}
+      - Dưới [5 triệu]{"entity": "price", "role": "top"}
+      - < [1 triệu]{"entity": "price", "role": "top"}
+      - Không quá [2 triệu]{"entity": "price", "role": "top"}
+      - Nhỏ hơn [3 triệu]{"entity": "price", "role": "top"}
+      - Giá bé hơn [3tr/thang]{"entity": "price", "role": "top"}
+      - Ít hơn [5.5 triệu]{"entity": "price", "role": "top"}
+      - [2.8tr]{"entity": "price", "role": "top"} đổ lại
+      - [10 triệu]{"entity": "price", "role": "top"} quay đầu
+      - [1 triệu]{"entity": "price", "role": "average"}
+      - Khoảng [2 triệu]{"entity": "price", "role": "average"}
+      - Tầm [3 triệu]{"entity": "price", "role": "average"}
+      - Tầm khoảng [4 triệu]{"entity": "price", "role": "average"}
+      - [5 tr/thang]{"entity": "price", "role": "average"}
+      - Giá trung bình [6 triệu]{"entity": "price", "role": "average"}
+      - giá [2 triệu/tháng]{"entity": "price", "role": "average"}
+      - Giá khoảng [3 triệu/tháng]{"entity": "price", "role": "average"}
+      - Giá chừng [2tr/tháng]{"entity": "price", "role": "average"}
+      - Giá tầm [10trieu]{"entity": "price", "role": "average"}
+      - Khoảng chừng [5 triệu/tháng]{"entity": "price", "role": "average"}
+      - Ngân sách khoảng [12 tỷ]{"entity": "price", "role": "average"}
+      - Ngân sách từ [2]{"entity": "price", "role": "bottom"} đến [3 tỷ]{"entity": "price", "role": "top"}
+      - giá từ [1 triệu]{"entity": "price", "role": "bottom"} đến [3 triệu]{"entity": "price", "role": "top"}
+      - Giá: [1tr]{"entity": "price", "role": "bottom"} - [3tr]{"entity": "price", "role": "top"}
+      - Từ [2 triệu]{"entity": "price", "role": "bottom"} đến [5 triệu]{"entity": "price", "role": "top"}
+      - [2]{"entity": "price", "role": "bottom"} - [5 triệu]{"entity": "price", "role": "top"}
+      - giá từ [1 triệu]{"entity": "price", "role": "bottom"}
+      - Giá: [1tr]{"entity": "price", "role": "bottom"}
+      - Từ [2 triệu]{"entity": "price", "role": "bottom"}
+      - Chỉ hơn [2]{"entity": "price", "role": "bottom"}
+      - Trên [3 triệu]{"entity": "price", "role": "bottom"}
+      - >= [3 triệu]{"entity": "price", "role": "bottom"}
+      - Hơn [3 triệu]{"entity": "price", "role": "bottom"}
+      - Giá lớn hơn [3 triệu]{"entity": "price", "role": "bottom"}
+      - Không dưới [3 triệu]{"entity": "price", "role": "bottom"}
+      - giá dưới [3 triệu]{"entity": "price", "role": "top"}
+      - Giá: dưới [3tr]{"entity": "price", "role": "top"}
+      - Dưới [5 triệu]{"entity": "price", "role": "top"}
+      - Chỉ [2 triệu]{"entity": "price", "role": "top"}
+      - Dưới [2.5 triệu]{"entity": "price", "role": "top"}
+      - Dưới [3 triệu]{"entity": "price", "role": "top"}
+      - Dưới [5 triệu]{"entity": "price", "role": "top"}
+      - < [1 triệu]{"entity": "price", "role": "top"}
+      - Không quá [2 triệu]{"entity": "price", "role": "top"}
+      - Nhỏ hơn [3 triệu]{"entity": "price", "role": "top"}
+      - Giá bé hơn [3tr/thang]{"entity": "price", "role": "top"}
+      - Ít hơn [5.5 triệu]{"entity": "price", "role": "top"}
+      - [2.8tr]{"entity": "price", "role": "top"} đổ lại
+      - [10 triệu]{"entity": "price", "role": "top"} quay đầu
+      - [1 triệu]{"entity": "price", "role": "average"}
+      - Khoảng [2 triệu]{"entity": "price", "role": "average"}
+      - Tầm [3 triệu]{"entity": "price", "role": "average"}
+      - Tầm khoảng [4 triệu]{"entity": "price", "role": "average"}
+      - [5 tr/thang]{"entity": "price", "role": "average"}
+      - Giá trung bình [6 triệu]{"entity": "price", "role": "average"}
+      - giá [2 triệu/tháng]{"entity": "price", "role": "average"}
+      - Giá khoảng [3 triệu/tháng]{"entity": "price", "role": "average"}
+      - Giá chừng [2tr/tháng]{"entity": "price", "role": "average"}
+      - Giá tầm [10trieu]{"entity": "price", "role": "average"}
+      - Khoảng chừng [5 triệu/tháng]{"entity": "price", "role": "average"}
+      - Ngân sách khoảng [12 tỷ]{"entity": "price", "role": "average"}
+      - Ngân sách từ [2]{"entity": "price", "role": "bottom"} đến [3 tỷ]{"entity": "price", "role": "top"}
+      - giá từ [1 triệu]{"entity": "price", "role": "bottom"} đến [3 triệu]{"entity": "price", "role": "top"}
+      - Giá: [1tr]{"entity": "price", "role": "bottom"} - [3tr]{"entity": "price", "role": "top"}
+      - Từ [2 triệu]{"entity": "price", "role": "bottom"} đến [5 triệu]{"entity": "price", "role": "top"}
+      - [2]{"entity": "price", "role": "bottom"} - [5 triệu]{"entity": "price", "role": "top"}
+      - giá từ [1 triệu]{"entity": "price", "role": "bottom"}
+      - Giá: [1tr]{"entity": "price", "role": "bottom"}
+      - Từ [2 triệu]{"entity": "price", "role": "bottom"}
+      - Chỉ hơn [2]{"entity": "price", "role": "bottom"}
+      - Trên [3 triệu]{"entity": "price", "role": "bottom"}
+      - >= [3 triệu]{"entity": "price", "role": "bottom"}
+      - Hơn [3 triệu]{"entity": "price", "role": "bottom"}
+      - Giá lớn hơn [3 triệu]{"entity": "price", "role": "bottom"}
+      - Không dưới [3 triệu]{"entity": "price", "role": "bottom"}
+      - giá dưới [3 triệu]{"entity": "price", "role": "top"}
+      - Giá: dưới [3tr]{"entity": "price", "role": "top"}
+      - Dưới [5 triệu]{"entity": "price", "role": "top"}
+      - Chỉ [2 triệu]{"entity": "price", "role": "top"}
+      - Dưới [2.5 triệu]{"entity": "price", "role": "top"}
+      - Dưới [3 triệu]{"entity": "price", "role": "top"}
+      - Dưới [5 triệu]{"entity": "price", "role": "top"}
+      - < [1 triệu]{"entity": "price", "role": "top"}
+      - Không quá [2 triệu]{"entity": "price", "role": "top"}
+      - Nhỏ hơn [3 triệu]{"entity": "price", "role": "top"}
+      - Giá bé hơn [3tr/thang]{"entity": "price", "role": "top"}
+      - Ít hơn [5.5 triệu]{"entity": "price", "role": "top"}
+      - [2.8tr]{"entity": "price", "role": "top"} đổ lại
+      - [10 triệu]{"entity": "price", "role": "top"} quay đầu
+      - [1 triệu]{"entity": "price", "role": "average"}
+      - Khoảng [2 triệu]{"entity": "price", "role": "average"}
+      - Tầm [3 triệu]{"entity": "price", "role": "average"}
+      - Tầm khoảng [4 triệu]{"entity": "price", "role": "average"}
+      - [5 tr/thang]{"entity": "price", "role": "average"}
+      - Giá trung bình [6 triệu]{"entity": "price", "role": "average"}
+      - giá [2 triệu/tháng]{"entity": "price", "role": "average"}
+      - Giá khoảng [3 triệu/tháng]{"entity": "price", "role": "average"}
+      - Giá chừng [2tr/tháng]{"entity": "price", "role": "average"}
+      - Giá tầm [10trieu]{"entity": "price", "role": "average"}
+      - Khoảng chừng [5 triệu/tháng]{"entity": "price", "role": "average"}
+      - Ngân sách khoảng [12 tỷ]{"entity": "price", "role": "average"}
+      - Ngân sách từ [2]{"entity": "price", "role": "bottom"} đến [3 tỷ]{"entity": "price", "role": "top"}
+      - Tôi muốn tìm nhà giá không vượt quá [10 triệu/tháng]{"entity": "price", "role": "top"}
+      - Ngân sách của tôi không quá [8 triệu/tháng]{"entity": "price", "role": "top"}
+      - Giá không vượt quá [9 triệu]{"entity": "price", "role": "top"}
+      - Tôi tìm nhà giá khoảng [7 triệu]{"entity": "price", "role": "average"}
+      - Tôi muốn tìm phòng trọ với giá khoảng [6 triệu]{"entity": "price", "role": "average"}
+      - Giá nhà từ [4 triệu]{"entity": "price", "role": "bottom"} đến [7 triệu]{"entity": "price", "role": "top"}
+      - Ngân sách của tôi từ [5 triệu]{"entity": "price", "role": "bottom"} đến [10 triệu]{"entity": "price", "role": "top"}
+      - Tôi muốn tìm phòng trọ giá từ [3 triệu]{"entity": "price", "role": "bottom"} đến [6 triệu]{"entity": "price", "role": "top"}
+      - Tôi đang tìm nhà giá không vượt quá [15 triệu]{"entity": "price", "role": "top"}
+      - Tôi cần nhà giá từ [2 triệu]{"entity": "price", "role": "bottom"} đến [4 triệu]{"entity": "price", "role": "top"}
+      - Giá thuê nhà của tôi khoảng [12 triệu]{"entity": "price", "role": "average"}
+      - Ngân sách thuê nhà của tôi không quá [8 triệu]{"entity": "price", "role": "top"}
+      - Tôi muốn tìm nhà giá không dưới [5 triệu]{"entity": "price", "role": "bottom"}
+      - Ngân sách của tôi khoảng [6 triệu]{"entity": "price", "role": "average"}
+      - Tôi muốn tìm nhà giá từ [4 triệu]{"entity": "price", "role": "bottom"} đến [8 triệu]{"entity": "price", "role": "top"}
+      - Tôi đang tìm nhà giá từ [7 triệu]{"entity": "price", "role": "bottom"} đến [10 triệu]{"entity": "price", "role": "top"}
+      - Giá nhà của tôi khoảng [11 triệu]{"entity": "price", "role": "average"}
+      - Tôi tìm nhà giá dưới [13 triệu]{"entity": "price", "role": "top"}
+      - Tôi muốn tìm phòng trọ giá khoảng [9 triệu]{"entity": "price", "role": "average"}
+      - Tôi cần nhà giá từ [3 triệu]{"entity": "price", "role": "bottom"} đến [5 triệu]{"entity": "price", "role": "top"}
+      - Giá thuê nhà không vượt quá [7 triệu]{"entity": "price", "role": "top"}
+      - Ngân sách của tôi dưới [15 triệu]{"entity": "price", "role": "top"}
+      - Tôi tìm nhà giá khoảng [10 triệu]{"entity": "price", "role": "average"}
+      - Tôi muốn tìm phòng trọ với giá không quá [6 triệu]{"entity": "price", "role": "top"}
+      - Tôi cần nhà giá từ [4 triệu]{"entity": "price", "role": "bottom"} đến [9 triệu]{"entity": "price", "role": "top"}
+      - Từ [2]{"entity": "price", "role": "bottom"} đến [3 triệu]{"entity": "price", "role": "top"}

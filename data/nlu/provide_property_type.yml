@@ -1,0 +1,21 @@
+version: "3.1"
+nlu:
+  - intent: provide_property_type
+    examples: |
+      - [nhà](property_type)
+      - [căn hộ](property_type)
+      - [phòng trọ](property_type)
+      - [văn phòng](property_type)
+      - [đất nền](property_type)
+      - [biệt thự](property_type)
+      - [chung cư](property_type)
+      - [nhà phố](property_type)
+      - [nhà riêng](property_type)
+      - [nhà mặt phố](property_type)
+      - [nhà trọ](property_type)
+      - [nhà xưởng](property_type)
+      - [nhà hàng](property_type)
+      - [cửa hàng](property_type)
+      - [kho xưởng](property_type)
+      - [đất](property_type)
+      - [sleep box](property_type)
