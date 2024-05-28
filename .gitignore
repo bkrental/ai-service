@@ -133,3 +133,5 @@ story_graph.dot
 # Windows specific files
 Thumbs.db
 ehthumbs.db
+
+environments/remote/credentials.yml
