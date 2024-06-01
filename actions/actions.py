@@ -1,5 +1,7 @@
 import os
 import requests
+import json
+import textwrap
 
 from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
@@ -110,12 +112,17 @@ class ActionSearchProperties(Action):
         return {
             "title": post["name"],
             "image_url": post["thumbnail"],
-            "subtitle": post["displayed_address"] + "\n" + str(post["price"]),
+            "subtitle": post["displayed_address"] + "\n" + str(post["price"]) + " triệu/tháng",
             "buttons": [
                 {
                     "type": "web_url",
                     "url": f"{FRONTEND_URL}/posts/{post['_id']}",
-                    "title": "Xem chi tiết",
+                    "title": "Xem trên web",
+                },
+                {
+                    "type":"postback",
+                    "title": "Thông tin chi tiết",
+                    "payload": "/view_post_details " + json.dumps({"post_id": post["_id"]})
                 }
             ],
         }
@@ -155,11 +162,19 @@ class ActionSearchProperties(Action):
 
         if response.status_code != 200:
             dispatcher.utter_message(
+                "Có lỗi xảy ra, xin vui lòng thử lại sau"
+            )
+            return
+        
+        data = response.json()["data"]
+        print(data)
+
+        if not data or len(data) == 0:
+            dispatcher.utter_message(
                 "Xin lỗi tôi không thể tìm thấy các bất động sản phù hợp với yêu cầu của bạn"
             )
             return
 
-        data = response.json()["data"]
         elements = list(
             map(
                 lambda post: self.get_post_card_json(post),
@@ -174,3 +189,45 @@ class ActionSearchProperties(Action):
             }
         }
         dispatcher.utter_message(json_message=gt)
+
+class ActionViewPostDetails(Action):
+    def name(self) -> Text:
+        return "action_view_post_details"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        data = json.loads(tracker.latest_message["text"].split("/view_post_details ")[1])
+        post_id = data["post_id"]
+
+        if not post_id:
+            dispatcher.utter_message(text="Sorry, I couldn't find the post details.")
+            return []
+
+        url = f"{RENTAL_SERVICE_URL}/posts/{post_id}"
+        response = requests.get(url)
+
+        if response.status_code != 200:
+            dispatcher.utter_message(
+                "Xin lỗi, tôi không thể tìm thấy thông tin chi tiết của bài đăng này"
+            )
+            return
+
+        data = response.json()["data"]
+        post = data["post"]
+
+        message = textwrap.dedent(f"""
+            Sau đây là thông tin chi tiết cho bài post: {post["name"]}
+
+            Address: {post["displayed_address"]}
+
+            Price: {post["price"]} triệu
+
+            Contact: {post.get("contact").get("name")} - {post.get("contact").get("phone")}
+
+            {post["description"]}
+        """)
+        dispatcher.utter_message(text=message)
+        return
+

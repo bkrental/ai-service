@@ -82,3 +82,16 @@ nlu:
       - Giá [phòng trọ](property_type) ở [quận 1](district) khoảng bao nhiêu?
       - Bạn có thể dự đoán giá [nhà](property_type) ở [quận 2](district) không?
       - Giá [chung cư](property_type) [2 phòng ngủ](number_of_bedrooms) ở [quận 3](district) là bao nhiêu?
+
+  - intent: view_post_details
+    examples: |
+      - Xem thông tin bài post
+      - Xem thông tin chi tiết
+      - Xem thông tin bài đăng
+      - Xem thông tin bài viết
+      - Xem thông tin bài đăng chi tiết
+      - Xem thông tin bài viết chi tiết
+      - Xem thông tin bài đăng cụ thể
+      - Xem thông tin bài viết cụ thể
+      - View post details
+      - View post details in detail

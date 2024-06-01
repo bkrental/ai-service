@@ -30,7 +30,7 @@ def extract_location(message, ner_model):
     addresses = extract_text_from_bio(entities)
 
     if len(addresses) == 0: return None
-    address = addresses[0]
+    address = " ".join(addresses)
 
     url = f"https://rsapi.goong.io/geocode"
 

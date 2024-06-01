@@ -81,3 +81,8 @@ rules:
     steps:
       - intent: nlu_fallback
       - action: utter_please_rephrase
+
+  - rule: Get post details
+    steps:
+      - intent: view_post_details
+      - action: action_view_post_details

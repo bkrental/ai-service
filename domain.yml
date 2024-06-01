@@ -13,6 +13,7 @@ intents:
   - provide_price
   - deny
   - affirm
+  - view_post_details
 
 entities:
   - property_type
@@ -76,7 +77,7 @@ responses:
     - text: "Bạn muốn {transaction_type} {property_type} ở {district}. Tôi sẽ tìm kiếm các bài post phù hợp cho bạn"
 
   utter_greet:
-    - text: "Hey! How are you?"
+    - text: "Xin chào, tôi là chatbot hỗ trọ tìm kiếm bất động sản và dự đoán giá. Bạn cần giúp gì không?"
 
   utter_out_of_scope:
     - text: Xin lỗi, tôi là chatbot để tìm kiếm bất động sản. Tôi không thể trả lời câu hỏi này
@@ -117,6 +118,7 @@ actions:
   - action_check_for_location_update
   - validate_search_properties_form
   - action_submit_search_properties_form
+  - action_view_post_details
 
 session_config:
   session_expiration_time: 60
